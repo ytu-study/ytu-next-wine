@@ -4,7 +4,11 @@ import Head from "next/head";
 import Image from "next/image";
 
 const Home: NextPage = () => {
-  return <div>Big Wine - created by Next.js</div>;
+  return (
+    <div>
+      Big Wine - created by Next.js<Test></Test>
+    </div>
+  );
 };
 
 export default Home;
