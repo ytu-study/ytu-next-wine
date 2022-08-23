@@ -3,8 +3,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 
-console.log('####');
-
 const Home: NextPage = () => {
   return (
     <div>
