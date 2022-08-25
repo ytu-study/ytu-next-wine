@@ -1,0 +1,17 @@
+query ($display: Int) {
+  getWines(display: $display) {
+    _id
+    name
+    enName
+    image
+    category
+    country
+    grape
+    price
+    sweet
+    body
+    tanin
+    winery
+    foodMatching
+  }
+}
