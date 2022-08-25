@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 const Div = styled.div`
-  color: blue;
+  color: red;
 `
 
 const Home: NextPage = () => {
