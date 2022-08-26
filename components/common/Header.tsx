@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 const links = [
   { text: 'Query', path: '/query' },
-  { text: 'Test', path: '/test' }
+  { text: 'Test', path: '/test' },
+  { text: 'Detail', path: '/detail/dd' }
 ]
 
 const Header = () => {
