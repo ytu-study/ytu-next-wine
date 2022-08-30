@@ -1,0 +1,6 @@
+projects:
+  prod:
+    schemaPath: schema.gql
+    extensions:
+      endpoints:
+        default: ${env:NEXT_PUBLIC_API_URL}
