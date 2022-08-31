@@ -1,11 +1,20 @@
-import { GraphQLClient } from "graphql-request";
-import GET_WINES from "@/graphql/query/getWines.gql";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Query } from '@/types/graphql';
+import { GraphQLClient, RequestDocument, Variables } from 'graphql-request';
+import * as Dom from 'graphql-request/src/types.dom';
 
-const graphQLClient = new GraphQLClient(process.env.NEXT_PUBLIC_API_URL);
+const symbol = Symbol('graphql');
 
-export const getWines = async () => {
-  const { getWines: result } = await graphQLClient.request(GET_WINES, {
-    display: 10,
-  });
-  return result;
-};
+export class Graphql extends GraphQLClient {
+  static graphql: Graphql;
+
+  constructor(_symbol: symbol) {
+    super(process.env.NEXT_PUBLIC_API_URL);
+    if (_symbol !== symbol) throw new Error('use Graphql.of()');
+  }
+
+  static get<T = Query, V = Variables>(document: RequestDocument, variables?: V, requestHeaders?: Dom.RequestInit['headers']): Promise<T> {
+    if (!this.graphql) this.graphql = new Graphql(symbol);
+    return this.graphql.request(document, variables, requestHeaders);
+  }
+}
