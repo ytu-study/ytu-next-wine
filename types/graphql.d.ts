@@ -24,6 +24,7 @@ export type QueryGetWinesArgs = {
   page?: InputMaybe<Scalars['Int']>;
 };
 
+/** 와인 정보 */
 export type Wine = {
   __typename?: 'Wine';
   /** uuid */
