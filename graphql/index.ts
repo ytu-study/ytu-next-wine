@@ -10,7 +10,7 @@ export class Graphql extends GraphQLClient {
 
   constructor(_symbol: symbol) {
     super(process.env.NEXT_PUBLIC_API_URL);
-    if (_symbol !== symbol) throw new Error('use Graphql.of()');
+    if (_symbol !== symbol) throw new Error('use Graphql.get()');
   }
 
   static get<T = Query, V = Variables>(document: RequestDocument, variables?: V, requestHeaders?: Dom.RequestInit['headers']): Promise<T> {
