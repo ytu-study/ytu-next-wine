@@ -1,3 +1,4 @@
+import WineInfo from '@/components/detail/WineInfo';
 import { useFetchWines } from '@/hooks/apis/useFetchWines';
 import { useRouter } from 'next/router';
 
@@ -10,7 +11,7 @@ function Detail(){
 
   return(
     <div>
-      <div>detailPage</div>
+      <WineInfo />
     </div>
   )
 }
