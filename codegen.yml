@@ -1,0 +1,10 @@
+schema: ${NEXT_PUBLIC_API_URL}
+documents: graphql/**/*.{gql,graphql}
+generates:
+  ./types/graphql.d.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+  schema.graphql:
+    plugins:
+      - schema-ast
