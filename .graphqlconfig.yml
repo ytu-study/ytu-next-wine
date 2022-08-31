@@ -1,6 +1,6 @@
 projects:
   prod:
-    schemaPath: schema.gql
+    schemaPath: schema.graphql
     extensions:
       endpoints:
         default: ${env:NEXT_PUBLIC_API_URL}
