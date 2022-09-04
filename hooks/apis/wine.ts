@@ -9,5 +9,7 @@ export function useFetchWines(paginationArgs?: QueryGetWinesArgs) {
 }
 
 export function useFetchWine(wineArgs: QueryGetWineArgs) {
-  return useQuery('wine', () => Graphql.get(GET_WINE, wineArgs).then(data => data.getWine))
+  return useQuery('wine', () => Graphql.get(GET_WINE, wineArgs).then(data => data.getWine), {
+    enabled: !!wineArgs?.id,
+  })
 }

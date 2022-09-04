@@ -10,6 +10,7 @@ query ($id: String!) {
     price
     sweet
     body
+    acidity
     tanin
     winery
     foodMatching

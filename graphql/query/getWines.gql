@@ -10,6 +10,7 @@ query ($display: Int) {
     price
     sweet
     body
+    acidity
     tanin
     winery
     foodMatching
