@@ -6,15 +6,10 @@ import { useQuery } from 'react-query';
 function Detail() {
   const router = useRouter();
   const wineId = router.query.id as string;
-  const { data: { getWine: wine }, isLoading } = useQuery(api.WINE, () => api.fetchWine({ id: wineId }), {
-    enabled: !!wineId,
-  });
-
-  console.log('wine', wineId, wine, isLoading);
 
   return (
     <div>
-      <WineInfo info={wine} isLoading={isLoading} />
+      <WineInfo id={wineId}/>
     </div>
   );
 }

@@ -1,8 +1,8 @@
+import api from '@/api';
 import WineTaste from '@/components/detail/WineTaste';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useQuery } from 'react-query';
 import styled from 'styled-components';
-import {Wine} from '@/types/graphql';
 import Skeleton from 'react-loading-skeleton';
 
 const Info = styled.div`
@@ -33,42 +33,42 @@ const Detail = styled.div`
   }
 
 `
-
-type Info = {
-  info: Wine;
-  isLoading: boolean;
+type WineInfoProps = {
+  id: string;
 }
 
-function WineInfo(props: Info){
-  // console.log('info', props.info.category);
+function WineInfo(props: WineInfoProps){
+  const wineId = props.id
+  const { data: wine, isLoading } = useQuery(api.WINE, () => api.fetchWine({ id: wineId }).then(data => data.getWine), {
+    enabled: !!wineId,
+  });
 
-  const [loading, setLoading] = useState(true);
-  const wine = props.info;
+  if(!wine) return null;
 
   return(
     <Info>
       <WineImg>
-        <Image src="/img/wine.png" width={320} height={430}/>
+        <Image src={wine.image} width={320} height={430}/>
       </WineImg>
       <div>
         <div>
           <Summary>
-            {props.isLoading ? (<Skeleton width={196} height={18} containerClassName="skeleton"/>) : (
-              <Category>{ wine?.category}</Category>
+            {isLoading ? (<Skeleton width={196} height={18} containerClassName="skeleton"/>) : (
+              <Category>{ wine.category}</Category>
             )}
-            <span>{wine?.country}</span>
+            <span>{wine.country}</span>
             <span>|</span>
-            <span>{wine?.winery}</span>
+            <span>{wine.winery}</span>
           </Summary>
           <div>
           </div>
         </div>
         <div>
-          <h3>{wine?.name}</h3>
-          <p>{wine?.enName}</p>
+          <h3>{wine.name}</h3>
+          <p>{wine.enName}</p>
         </div>
         <div>
-          <p>{wine?.price}</p>
+          <p>{wine.price}</p>
         </div>
         <Detail>
           <div>
@@ -77,9 +77,12 @@ function WineInfo(props: Info){
         </Detail>
         <div>
           <span>포도</span>
+          <span>{wine.grape}</span>
         </div>
         <div>
-          <span>어울리는 음식</span>
+          {
+            wine.foodMatching.length > 0 ?  <span>어울리는 음식</span> : null
+          }
         </div>
       </div>
     </Info>
