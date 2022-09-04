@@ -9,6 +9,12 @@ const WineImg = styled.div`
 
 `
 
+const Category = styled.span`
+  background-color: #ea9ab2;
+  padding: 5px 15px;
+  border-radius: 4px;
+`
+
 const Detail = styled.div`
   >div{
     display: inline-block;
@@ -34,11 +40,15 @@ function WineInfo(){
       </WineImg>
       <div>
         <div>
-          <span>레드</span>
-          <span>|</span>
-          <span>이탈리아</span>
-          <span>|</span>
-          <span>와이너리</span>
+          <div>
+            <Category>레드</Category>
+            <span>이탈리아</span>
+            <span>|</span>
+            <span>와이너리</span>
+          </div>
+          <div>
+
+          </div>
         </div>
         <div>
           <h3>와인이름</h3>

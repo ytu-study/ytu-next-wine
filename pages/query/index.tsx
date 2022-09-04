@@ -1,4 +1,4 @@
-import { useFetchWines } from '@/hooks/apis/useFetchWines';
+import { useFetchWines } from '@/hooks/apis/wine';
 import { NextPage } from 'next';
 import React from 'react';
 
