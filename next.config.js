@@ -12,6 +12,9 @@ const nextConfig = {
     });
     return config;
   },
+  images: {
+    domains: ["wine21.speedgabia.com"],
+  },
 };
 
 module.exports = nextConfig;

@@ -1,15 +1,28 @@
+import api from '@/api';
+import WineTaste from '@/components/detail/WineTaste';
 import Image from 'next/image';
+import { useQuery } from 'react-query';
 import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton';
 
 const Info = styled.div`
   display: flex;
 `
 
-const WineImg = styled.div`
-
+const Summary = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  column-gap: 10px;
+  .skeleton{ width: 50px; height: 20px; display: inline-block;}
 `
 
-const Category = styled.span`
+const WineImg = styled.div`
+  margin-right: 50px;
+`
+
+const Category = styled.div`
+  display: inline-block;
   background-color: #ea9ab2;
   padding: 5px 15px;
   border-radius: 4px;
@@ -22,96 +35,58 @@ const Detail = styled.div`
       display: inline-block;
     }
   }
-`
 
-const Circle = styled.div`
-  width:18px; height: 18px; background-color: #c70039; border-radius: 100px; display: inline-block; margin-right: 9px;
-  &:nth-of-type(1){ opacity: .25;}
-  &:nth-of-type(2){ opacity: .4;}
-  &:nth-of-type(3){ opacity: .55;}
-  &:nth-of-type(4){ opacity: .75;}
 `
+type WineInfoProps = {
+  id: string;
+}
 
-function WineInfo(){
+function WineInfo(props: WineInfoProps){
+  const wineId = props.id
+  const { data: wine, isLoading } = useQuery(api.WINE, () => api.fetchWine({ id: wineId }).then(data => data.getWine), {
+    enabled: !!wineId,
+  });
+
+  if(!wine) return null;
+
   return(
     <Info>
       <WineImg>
-        <Image src="/img/wine.png" width={320} height={430}/>
+        <Image src={wine.image} width={320} height={430}/>
       </WineImg>
       <div>
         <div>
+          <Summary>
+            {isLoading ? (<Skeleton width={196} height={18} containerClassName="skeleton"/>) : (
+              <Category>{ wine.category}</Category>
+            )}
+            <div>{wine.country}</div>
+            <div>|</div>
+            <div>{wine.winery}</div>
+          </Summary>
           <div>
-            <Category>레드</Category>
-            <span>이탈리아</span>
-            <span>|</span>
-            <span>와이너리</span>
-          </div>
-          <div>
-
           </div>
         </div>
         <div>
-          <h3>와인이름</h3>
-          <p>와인 영어이름</p>
+          <h3>{wine.name}</h3>
+          <p>{wine.enName}</p>
         </div>
         <div>
-          <p>가격 정보</p>
+          <p>{wine.price}</p>
         </div>
         <Detail>
           <div>
-            <span>당도</span>
-            <div>
-              {
-                Array.from({length: 5}).map((a,i) => {
-                  return(
-                      <Circle key={i}/>
-                  )
-                })
-              }
-            </div>
-          </div>
-          <div>
-            <span>산도</span>
-            <div>
-              {
-                Array.from({length: 5}).map((a,i) => {
-                  return(
-                    <Circle key={i}/>
-                  )
-                })
-              }
-            </div>
-          </div>
-          <div>
-            <span>바디</span>
-            <div>
-              {
-                Array.from({length: 5}).map((a,i) => {
-                  return(
-                    <Circle key={i}/>
-                  )
-                })
-              }
-            </div>
-          </div>
-          <div>
-            <span>타닌</span>
-            <div>
-              {
-                Array.from({length: 5}).map((a,i) => {
-                  return(
-                    <Circle key={i}/>
-                  )
-                })
-              }
-            </div>
+           <WineTaste info={wine} />
           </div>
         </Detail>
         <div>
           <span>포도</span>
+          <span>{wine.grape}</span>
         </div>
         <div>
-          <span>어울리는 음식</span>
+          {
+            wine.foodMatching.length > 0 ?  <span>어울리는 음식</span> : null
+          }
         </div>
       </div>
     </Info>

@@ -1,19 +1,17 @@
+import api from '@/api';
 import WineInfo from '@/components/detail/WineInfo';
-import { useFetchWines } from '@/hooks/apis/wine';
 import { useRouter } from 'next/router';
+import { useQuery } from 'react-query';
 
-function Detail(){
-  const { data, isLoading } = useFetchWines();
+function Detail() {
   const router = useRouter();
-  const wine = router.query.id;
+  const wineId = router.query.id as string;
 
-  console.log('wine',wine);
-
-  return(
+  return (
     <div>
-      <WineInfo />
+      <WineInfo id={wineId}/>
     </div>
-  )
+  );
 }
 
 export default Detail;
