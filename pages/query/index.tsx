@@ -4,12 +4,12 @@ import React from 'react';
 import { useQuery } from 'react-query';
 
 const QueryPage: NextPage = () => {
-  const { data: { getWines }, isLoading } = useQuery(api.WINE, () => api.fetchWines());
+  const { data , isLoading } = useQuery(api.WINES, () => api.fetchWines());
   if (isLoading) return <div>Loading...</div>;
 
   return (
     <ul>
-      {getWines.map(w => <li key={w._id}>{w.name}</li>)}
+      {data.getWines.map(w => <li key={w._id}>{w.name}</li>)}
     </ul>
   );
 };
