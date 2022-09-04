@@ -10,11 +10,15 @@ const Info = styled.div`
 `
 
 const Summary = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  column-gap: 10px;
   .skeleton{ width: 50px; height: 20px; display: inline-block;}
 `
 
 const WineImg = styled.div`
-
+  margin-right: 50px;
 `
 
 const Category = styled.div`
@@ -56,9 +60,9 @@ function WineInfo(props: WineInfoProps){
             {isLoading ? (<Skeleton width={196} height={18} containerClassName="skeleton"/>) : (
               <Category>{ wine.category}</Category>
             )}
-            <span>{wine.country}</span>
-            <span>|</span>
-            <span>{wine.winery}</span>
+            <div>{wine.country}</div>
+            <div>|</div>
+            <div>{wine.winery}</div>
           </Summary>
           <div>
           </div>
