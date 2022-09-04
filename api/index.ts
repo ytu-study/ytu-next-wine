@@ -3,13 +3,18 @@ import GET_WINES from '@/graphql/query/getWines.gql';
 import { Graphql } from '@/modules/graphql';
 import { QueryGetWineArgs, QueryGetWinesArgs } from '@/types/graphql';
 
-export class Api extends Graphql {
+class Key {
+  readonly WINE = 'wine';
+  readonly WINES = 'wines';
+}
+
+export class Api extends Key {
   fetchWine(wineArgs: QueryGetWineArgs) {
-    return this.get(GET_WINE, wineArgs);
+    return Graphql.get(GET_WINE, wineArgs);
   }
 
   fetchWines(winesArgs?: QueryGetWinesArgs) {
-    return this.get(GET_WINES, winesArgs);
+    return Graphql.get(GET_WINES, winesArgs);
   }
 }
 
