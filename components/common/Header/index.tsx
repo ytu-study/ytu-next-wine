@@ -1,21 +1,16 @@
-import { containerWidth } from "@/styles/theme";
-import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-
-const links = [
-  { text: "Query", path: "/query" },
-  { text: "Detail", path: "/detail/dd" },
-];
+import { containerWidth } from "@/styles/theme";
+import HeaderController from "./HeaderController";
+import HeaderNavigator from "./HeaderNavigator";
 
 const Header = () => {
   return (
     <ScHeader>
-      {links.map((link) => (
-        <Link href={link.path} key={link.text}>
-          {link.text}
-        </Link>
-      ))}
+      <HeaderContainer>
+        <HeaderController />
+        <HeaderNavigator />
+      </HeaderContainer>
     </ScHeader>
   );
 };
@@ -30,10 +25,11 @@ const ScHeader = styled.header`
   height: 128px;
   background-color: ${({ theme }) => theme.background.main};
   border-bottom: ${({ theme }) => theme.border.main};
+`;
 
-  & > a {
-    margin-right: 20px;
-  }
+const HeaderContainer = styled.div`
+  ${containerWidth};
+  margin: 0 auto;
 `;
 
 export default Header;
