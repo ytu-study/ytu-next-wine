@@ -75,11 +75,11 @@ export type Unnamed_1_QueryVariables = Exact<{
 }>;
 
 
-export type Unnamed_1_Query = { __typename?: 'Query', getWine: { __typename?: 'Wine', _id: string, name: string, enName: string, image: string, category: string, country: string, grape: string, price?: number | null, sweet: number, body: number, tanin: number, winery: string, foodMatching?: Array<string> | null } };
+export type Unnamed_1_Query = { __typename?: 'Query', getWine: { __typename?: 'Wine', _id: string, name: string, enName: string, image: string, category: string, country: string, grape: string, price?: number | null, sweet: number, body: number, acidity: number, tanin: number, winery: string, foodMatching?: Array<string> | null } };
 
 export type Unnamed_2_QueryVariables = Exact<{
   display?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type Unnamed_2_Query = { __typename?: 'Query', getWines: Array<{ __typename?: 'Wine', _id: string, name: string, enName: string, image: string, category: string, country: string, grape: string, price?: number | null, sweet: number, body: number, tanin: number, winery: string, foodMatching?: Array<string> | null }> };
+export type Unnamed_2_Query = { __typename?: 'Query', getWines: Array<{ __typename?: 'Wine', _id: string, name: string, enName: string, image: string, category: string, country: string, grape: string, price?: number | null, sweet: number, body: number, acidity: number, tanin: number, winery: string, foodMatching?: Array<string> | null }> };
