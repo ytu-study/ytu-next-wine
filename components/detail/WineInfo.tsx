@@ -1,9 +1,10 @@
 import api from '@/api';
 import WineTaste from '@/components/detail/WineTaste';
+import { DetailProps } from '@/pages/detail/[id]';
 import Image from 'next/image';
+import Skeleton from 'react-loading-skeleton';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
-import Skeleton from 'react-loading-skeleton';
 
 const Info = styled.div`
   display: flex;
@@ -37,17 +38,9 @@ const Detail = styled.div`
   }
 
 `
-type WineInfoProps = {
-  id: string;
-}
 
-function WineInfo(props: WineInfoProps){
-  const wineId = props.id
-  const { data: wine, isLoading } = useQuery(api.WINE, () => api.fetchWine({ id: wineId }).then(data => data.getWine), {
-    enabled: !!wineId,
-  });
-
-  if(!wine) return null;
+function WineInfo(props: DetailProps){
+  const { data: wine, isLoading } = useQuery(api.WINE, () => api.fetchWine({ id: props.wineId }).then(data => data.getWine));
 
   return(
     <Info>
@@ -85,7 +78,7 @@ function WineInfo(props: WineInfoProps){
         </div>
         <div>
           {
-            wine.foodMatching.length > 0 ?  <span>어울리는 음식</span> : null
+            wine.foodMatching?.length > 0 ?  <span>어울리는 음식</span> : null
           }
         </div>
       </div>
