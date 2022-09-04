@@ -14,8 +14,15 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
+  /** 와인 상세목록 조회 */
+  getWine: Wine;
   /** 와인 목록 조회 */
   getWines: Array<Wine>;
+};
+
+
+export type QueryGetWineArgs = {
+  id: Scalars['String'];
 };
 
 
@@ -64,8 +71,15 @@ export type Wine = {
 };
 
 export type Unnamed_1_QueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type Unnamed_1_Query = { __typename?: 'Query', getWine: { __typename?: 'Wine', _id: string, name: string, enName: string, image: string, category: string, country: string, grape: string, price?: number | null, sweet: number, body: number, tanin: number, winery: string, foodMatching?: Array<string> | null } };
+
+export type Unnamed_2_QueryVariables = Exact<{
   display?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type Unnamed_1_Query = { __typename?: 'Query', getWines: Array<{ __typename?: 'Wine', _id: string, name: string, enName: string, image: string, category: string, country: string, grape: string, price?: number | null, sweet: number, body: number, tanin: number, winery: string, foodMatching?: Array<string> | null }> };
+export type Unnamed_2_Query = { __typename?: 'Query', getWines: Array<{ __typename?: 'Wine', _id: string, name: string, enName: string, image: string, category: string, country: string, grape: string, price?: number | null, sweet: number, body: number, tanin: number, winery: string, foodMatching?: Array<string> | null }> };

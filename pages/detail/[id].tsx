@@ -1,5 +1,5 @@
 import WineInfo from '@/components/detail/WineInfo';
-import { useFetchWines } from '@/hooks/apis/useFetchWines';
+import { useFetchWines } from '@/hooks/apis/wine';
 import { useRouter } from 'next/router';
 
 function Detail(){
