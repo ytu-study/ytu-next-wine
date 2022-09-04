@@ -5,7 +5,7 @@ import styled from "styled-components";
 const links = [
   { text: "Query", path: "/query" },
   { text: "Test", path: "/test" },
-  { text: "Detail", path: "/detail/dd" },
+  { text: "Detail", path: "/detail/6f76f835-390c-48e7-8cfd-9fdd7163c122" },
 ];
 
 const Header = () => {
