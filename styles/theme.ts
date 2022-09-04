@@ -1,3 +1,5 @@
+import { css } from "styled-components";
+
 export const lightTheme: ThemeColors = {
   major: {
     main: "#BA1628",
@@ -49,3 +51,8 @@ export const darkTheme: ThemeColors = {
     main: "#DEDEDE solid 1px",
   },
 };
+
+export const containerWidth = css`
+  width: 1217px;
+  max-width: 1217px;
+`;

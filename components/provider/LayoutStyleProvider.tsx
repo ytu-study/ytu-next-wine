@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import GlobalStyle from "@/styles/global";
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "@/styles/theme";
+import { lightTheme, darkTheme, containerWidth } from "@/styles/theme";
 import useTheme from "@/hooks/useTheme";
 import Header from "@/components/common/Header";
 
@@ -16,16 +16,21 @@ const LayoutStyleProvider = ({ children }: Props) => {
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
-      <ThemeToggleButton onClick={() => toggleTheme()}>
-        다크모드
-      </ThemeToggleButton>
       <Header />
-      {children}
+      <MainContainer>{children}</MainContainer>
+      <ThemeButton onClick={() => toggleTheme()}>다크모드</ThemeButton>
     </ThemeProvider>
   );
 };
 
-const ThemeToggleButton = styled.button`
+const MainContainer = styled.main`
+  ${containerWidth};
+  min-height: 100vh;
+  margin: 0 auto;
+  border: 1px solid #c7c7c7;
+`;
+
+const ThemeButton = styled.button`
   position: fixed;
   left: 20px;
   bottom: 20px;

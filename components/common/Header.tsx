@@ -1,10 +1,10 @@
+import { containerWidth } from "@/styles/theme";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 
 const links = [
   { text: "Query", path: "/query" },
-  { text: "Test", path: "/test" },
   { text: "Detail", path: "/detail/dd" },
 ];
 
@@ -27,8 +27,7 @@ const ScHeader = styled.header`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 60px;
-  padding: 20px;
+  height: 128px;
   background-color: ${({ theme }) => theme.background.main};
   border-bottom: ${({ theme }) => theme.border.main};
 

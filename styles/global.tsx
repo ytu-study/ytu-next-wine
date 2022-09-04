@@ -24,7 +24,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: ${({ theme }) => theme.text.main};
     background-color: ${({ theme }) => theme.background.main};
-    transition: background 0.2s ease-in, color 0.2s ease-in;
+    padding-top: 128px;
+    /* transition: background 0.2s ease-in, color 0.2s ease-in; */
   }
   img, picture, video, svg, canvas {
     display: block;
