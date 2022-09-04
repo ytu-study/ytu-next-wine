@@ -14,8 +14,15 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
+  /** 와인 상세목록 조회 */
+  getWine: Wine;
   /** 와인 목록 조회 */
   getWines: Array<Wine>;
+};
+
+
+export type QueryGetWineArgs = {
+  id: Scalars['String'];
 };
 
 
