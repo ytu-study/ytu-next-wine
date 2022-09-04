@@ -1,20 +1,24 @@
-import Link from 'next/link';
-import React from 'react'
-import styled from 'styled-components';
+import Link from "next/link";
+import React from "react";
+import styled from "styled-components";
 
 const links = [
-  { text: 'Query', path: '/query' },
-  { text: 'Test', path: '/test' },
-  { text: 'Detail', path: '/detail/dd' }
-]
+  { text: "Query", path: "/query" },
+  { text: "Test", path: "/test" },
+  { text: "Detail", path: "/detail/dd" },
+];
 
 const Header = () => {
   return (
     <ScHeader>
-      {links.map(link => <Link href={link.path} key={link.text}>{link.text}</Link>)}
+      {links.map((link) => (
+        <Link href={link.path} key={link.text}>
+          {link.text}
+        </Link>
+      ))}
     </ScHeader>
-  )
-}
+  );
+};
 
 const ScHeader = styled.header`
   position: absolute;
@@ -25,11 +29,12 @@ const ScHeader = styled.header`
   width: 100%;
   height: 60px;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: ${({ theme }) => theme.background.main};
+  border-bottom: ${({ theme }) => theme.border.main};
 
-  > a {
+  & > a {
     margin-right: 20px;
   }
-`
+`;
 
-export default Header
+export default Header;
