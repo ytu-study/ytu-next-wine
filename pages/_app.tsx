@@ -16,11 +16,11 @@ const queryClient = new QueryClient({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      {/* <Hydrate state={pageProps.dehydratedState}> */}
-      <Header />
-      <Component {...pageProps} />
-      {/* </Hydrate> */}
-      <ReactQueryDevtools initialIsOpen={false} position={'bottom-right'} />
+      <Hydrate state={pageProps.dehydratedState}>
+        <Header />
+        <Component {...pageProps} />
+      </Hydrate>
+      <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"} />
     </QueryClientProvider>
   );
 }
