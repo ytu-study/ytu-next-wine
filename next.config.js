@@ -4,7 +4,7 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  webpack: (config) => {
+  webpack: config => {
     config.module.rules.push({
       test: /\.(graphql|gql)$/,
       exclude: /node_modules/,
@@ -13,7 +13,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ["wine21.speedgabia.com"],
+    domains: ['wine21.speedgabia.com'],
   },
 };
 

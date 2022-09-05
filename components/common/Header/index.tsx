@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { containerWidth } from "@/styles/theme";
-import HeaderController from "./HeaderController";
-import HeaderNavigator from "./HeaderNavigator";
+import React from 'react';
+import styled from 'styled-components';
+import { containerWidth } from '@/styles/theme';
+import HeaderController from './HeaderController';
+import HeaderNavigator from './HeaderNavigator';
 
 const Header = () => {
   return (
