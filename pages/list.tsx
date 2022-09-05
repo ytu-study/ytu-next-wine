@@ -4,9 +4,9 @@ import { GetServerSidePropsContext } from 'next';
 import { useQuery } from 'react-query';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const dehydratedState = await Dehydrate.prefetchQuery(api.WINES, () => api.fetchWines({ page: 1, display: 10 }))
+  const dehydratedState = await Dehydrate.prefetchQuery(api.WINES, () => api.fetchWines({ page: 1, display: 10 }));
   return {
-    props: { dehydratedState }
+    props: { dehydratedState },
   };
 }
 
@@ -16,7 +16,9 @@ export default function List() {
   if (isLoading) return null;
   return (
     <>
-      {data.getWines.map(wine => (<div key={wine._id}>{wine.name}</div>))}
+      {data.getWines.map(wine => (
+        <div key={wine._id}>{wine.name}</div>
+      ))}
     </>
   );
 }
