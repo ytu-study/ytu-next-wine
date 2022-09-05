@@ -1,11 +1,11 @@
-import { AppInitialProps } from "next/app";
-import React from "react";
-import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+import { AppInitialProps } from 'next/app';
+import React from 'react';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 interface Props {
   children: React.ReactNode;
-  pageProps: AppInitialProps["pageProps"];
+  pageProps: AppInitialProps['pageProps'];
 }
 
 const queryClient = new QueryClient({
@@ -21,7 +21,7 @@ const ReactQueryProvider = ({ children, pageProps }: Props) => {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>{children}</Hydrate>
-      <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"} />
+      <ReactQueryDevtools initialIsOpen={false} position={'bottom-right'} />
     </QueryClientProvider>
   );
 };

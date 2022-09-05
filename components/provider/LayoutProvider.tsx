@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import GlobalStyle from "@/styles/global";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, containerWidth } from "@/styles/theme";
-import useTheme from "@/hooks/useTheme";
-import Header from "@/components/common/Header";
+import React from 'react';
+import styled from 'styled-components';
+import GlobalStyle from '@/styles/global';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme, containerWidth } from '@/styles/theme';
+import useTheme from '@/hooks/useTheme';
+import Header from '@/components/common/Header';
 
 interface Props {
   children: React.ReactNode;
@@ -18,9 +18,7 @@ const LayoutProvider = ({ children }: Props) => {
       <GlobalStyle />
       <Header />
       <MainContainer>{children}</MainContainer>
-      <ThemeButton onClick={() => toggleTheme()}>
-        {isDarkMode ? "라이트" : "다크"}모드
-      </ThemeButton>
+      <ThemeButton onClick={() => toggleTheme()}>{isDarkMode ? '라이트' : '다크'}모드</ThemeButton>
     </ThemeProvider>
   );
 };

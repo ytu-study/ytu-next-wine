@@ -1,6 +1,6 @@
-import MainLogo from "@/components/svg/MainLogo";
-import React from "react";
-import styled from "styled-components";
+import MainLogo from '@/components/svg/MainLogo';
+import React from 'react';
+import styled from 'styled-components';
 
 const HeaderController = () => {
   return (

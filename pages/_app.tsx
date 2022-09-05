@@ -1,6 +1,6 @@
-import type { AppProps } from "next/app";
-import LayoutProvider from "@/components/provider/LayoutProvider";
-import ReactQueryProvider from "@/components/provider/ReactQueryProvider";
+import type { AppProps } from 'next/app';
+import LayoutProvider from '@/components/provider/LayoutProvider';
+import ReactQueryProvider from '@/components/provider/ReactQueryProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
