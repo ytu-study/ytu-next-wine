@@ -10,7 +10,7 @@ on:
         options:
           - myrealtrip
           - hotfix
-      tag_name:
+      deploy_tag:
         description: "태그명을 직접 작성할 경우 입력해주세요."
 
 jobs:
