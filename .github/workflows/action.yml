@@ -26,6 +26,15 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: ${{ github.event.inputs.tag_name || github.event.inputs.deploy_type }}
+        release_name: ${{ github.event.inputs.tag_name }}
+          
+        
+#         if [ "${{ inputs.status }}" = "success" ]; then
+#           EMOTICON="✅"
+#         else
+#           EMOTICON="⛔"
+#         fi
+        
+#         release_name: ${{ github.event.inputs.tag_name || github.event.inputs.deploy_type }}
 #         draft: false
 #         prerelease: false
