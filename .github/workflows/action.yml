@@ -7,6 +7,9 @@ on:
         type: environment
         required: true
         description: "정기배포 여부를 선택해주세요."
+        options:
+          - myrealtrip
+          - hotfix
 
 jobs:
   build:
