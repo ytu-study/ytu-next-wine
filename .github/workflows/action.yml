@@ -2,6 +2,7 @@ name: Github Action Test
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   build:
