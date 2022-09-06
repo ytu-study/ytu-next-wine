@@ -1,8 +1,12 @@
 name: Github Action Test
 
 on:
-  push:
   workflow_dispatch:
+    inputs:
+      test:
+        type: environment
+        required: true
+        description: "정기배포 여부를 선택해주세요."
 
 jobs:
   build:
