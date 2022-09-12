@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import GlobalStyle from '@/styles/global';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme, containerWidth } from '@/styles/theme';
+import { theme, containerWidth } from '@/styles/theme';
 import useTheme from '@/hooks/useTheme';
 import Header from '@/components/common/Header';
 
@@ -14,7 +14,7 @@ const LayoutProvider = ({ children }: Props) => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Header />
       <MainContainer>{children}</MainContainer>
