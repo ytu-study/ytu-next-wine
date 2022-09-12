@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 
 type ThemeKey = 'light' | 'dark';
 
@@ -11,15 +11,16 @@ type ReturnType = {
 
 const useTheme = (): ReturnType => {
   const [theme, setTheme] = useState<ThemeKey>('light');
-  const isDarkMode = theme === 'dark';
+  const isDarkMode = useMemo(() => theme === 'dark', [theme]);
 
-  const initTheme = () => {};
+  const initTheme = useCallback(() => {
+    const preferDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initalTheme = (localStorage?.getItem('theme') || (preferDarkMode ? 'dark' : 'light')) as ThemeKey;
+    setTheme(initalTheme);
+  }, []);
 
   useEffect(() => {
-    const preferDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const initalTheme = preferDarkMode ? 'dark' : ((localStorage?.getItem('theme') || 'light') as ThemeKey);
-    setTheme(initalTheme);
+    initTheme();
   }, []);
 
   const toggleTheme = useCallback(() => {

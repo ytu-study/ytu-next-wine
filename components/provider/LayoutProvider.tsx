@@ -14,7 +14,7 @@ const LayoutProvider = ({ children }: Props) => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
       {/* <Header /> */}
       <MainContainer>{children}</MainContainer>
@@ -34,8 +34,8 @@ const ThemeButton = styled.button`
   left: 20px;
   bottom: 20px;
   padding: 5px 10px;
-  color: ${({ theme }) => theme.background.main};
-  background-color: ${({ theme }) => theme.text.main};
+  /* color: ${({ theme }) => theme.background.main}; */
+  /* background-color: ${({ theme }) => theme.text.main}; */
   border: 1px solid black;
   border-radius: 5px;
   cursor: pointer;
