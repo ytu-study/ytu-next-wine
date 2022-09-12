@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-type ThemeKey = "light" | "dark";
+type ThemeKey = 'light' | 'dark';
 
 type ReturnType = {
   theme: ThemeKey;
@@ -10,19 +10,15 @@ type ReturnType = {
 };
 
 const useTheme = (): ReturnType => {
-  const [theme, setTheme] = useState<ThemeKey>("light");
-  const isDarkMode = theme === "dark";
+  const [theme, setTheme] = useState<ThemeKey>('light');
+  const isDarkMode = theme === 'dark';
 
   const initTheme = () => {};
 
   useEffect(() => {
-    const preferDarkMode =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const preferDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    const initalTheme = preferDarkMode
-      ? "dark"
-      : ((localStorage?.getItem("theme") || "light") as ThemeKey);
+    const initalTheme = preferDarkMode ? 'dark' : ((localStorage?.getItem('theme') || 'light') as ThemeKey);
     setTheme(initalTheme);
   }, []);
 

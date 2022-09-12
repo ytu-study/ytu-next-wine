@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import GlobalStyle from "@/styles/global";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, containerWidth } from "@/styles/theme";
-import useTheme from "@/hooks/useTheme";
-import Header from "@/components/common/Header";
+import React from 'react';
+import styled from 'styled-components';
+import GlobalStyle from '@/styles/global';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme, containerWidth } from '@/styles/theme';
+import useTheme from '@/hooks/useTheme';
+import Header from '@/components/common/Header';
 
 interface Props {
   children: React.ReactNode;
 }
 
-const LayoutStyleProvider = ({ children }: Props) => {
+const LayoutProvider = ({ children }: Props) => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
@@ -18,7 +18,7 @@ const LayoutStyleProvider = ({ children }: Props) => {
       <GlobalStyle />
       {/* <Header /> */}
       <MainContainer>{children}</MainContainer>
-      <ThemeButton onClick={() => toggleTheme()}>다크모드</ThemeButton>
+      <ThemeButton onClick={() => toggleTheme()}>{isDarkMode ? '라이트' : '다크'}모드</ThemeButton>
     </ThemeProvider>
   );
 };
@@ -27,7 +27,6 @@ const MainContainer = styled.main`
   ${containerWidth};
   min-height: 100vh;
   margin: 0 auto;
-  border: 1px solid #c7c7c7;
 `;
 
 const ThemeButton = styled.button`
@@ -42,4 +41,4 @@ const ThemeButton = styled.button`
   cursor: pointer;
 `;
 
-export default LayoutStyleProvider;
+export default LayoutProvider;

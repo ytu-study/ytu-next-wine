@@ -1,0 +1,41 @@
+name: Github Action Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy_type:
+        type: choice
+        required: true
+        description: "정기배포 여부를 선택해주세요."
+        options:
+          - myrealtrip
+          - hotfix
+      deploy_tag:
+        description: "태그명을 직접 작성할 경우 입력해주세요."
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TAG_NAME: ${{ github.event.inputs.deploy_tag || github.event.inputs.deploy_type }}
+      with:
+        tag_name: ${{ env.TAG_NAME }}
+#         release_name: ${{ github.event.inputs.deploy_type }}
+          
+        
+#         if [ "${{ inputs.status }}" = "success" ]; then
+#           EMOTICON="✅"
+#         else
+#           EMOTICON="⛔"
+#         fi
+        
+#         release_name: ${{ github.event.inputs.tag_name || github.event.inputs.deploy_type }}
+#         draft: false
+#         prerelease: false
