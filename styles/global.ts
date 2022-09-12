@@ -22,11 +22,24 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   body {
-    color: ${({ theme }) => theme.text.main};
-    background-color: ${({ theme }) => theme.background.main};
+    /* color: ${({ theme }) => theme.text.main};
+    background-color: ${({ theme }) => theme.background.main}; */
+    color: var(--text-main);
+    background-color: var(--bg-main);
     padding-top: 128px;
-    /* transition: background 0.2s ease-in, color 0.2s ease-in; */
+    transition: background 0.2s ease-in, color 0.2s ease-in;
   }
+
+  body[data-theme="dark"] {
+    --bg-main: #1C1C1F;
+    --text-main: #FFFFFF;
+  }
+
+  body {
+    --bg-main: #FFFFFF;
+    --text-main: #1e1e1e;
+  }
+
   img, picture, video, svg, canvas {
     display: block;
     max-width: 100%;

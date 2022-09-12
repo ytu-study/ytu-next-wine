@@ -16,7 +16,7 @@ const LayoutStyleProvider = ({ children }: Props) => {
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
-      <Header />
+      {/* <Header /> */}
       <MainContainer>{children}</MainContainer>
       <ThemeButton onClick={() => toggleTheme()}>다크모드</ThemeButton>
     </ThemeProvider>

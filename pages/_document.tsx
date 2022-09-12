@@ -1,5 +1,17 @@
-import Document, { DocumentContext } from "next/document";
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from "next/document";
 import { ServerStyleSheet } from "styled-components";
+
+const themeInitializerScript = `
+      (function () {
+        document.body.dataset.theme = window.localStorage.getItem("theme") || "light";
+      })();
+  `;
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -9,7 +21,8 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -25,5 +38,20 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal();
     }
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head />
+        <body>
+          <script
+            dangerouslySetInnerHTML={{ __html: themeInitializerScript }}
+          />
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
   }
 }
