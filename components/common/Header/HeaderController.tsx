@@ -36,7 +36,7 @@ const SearchInput = styled.div`
   margin-left: 40px;
   padding: 4px 0 4px 48px;
   border-radius: 20px;
-  border: ${({ theme }) => theme.border.second};
+  border: var(--border-second);
 
   input {
     width: 100%;
