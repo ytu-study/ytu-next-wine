@@ -28,7 +28,7 @@ const ScHeaderNavigator = styled.div`
 
   & > a {
     margin-right: 20px;
-    /* color: ${({ theme }) => theme.text.subTitle}; */
+    color: var(--text-subTitle);
   }
 `;
 

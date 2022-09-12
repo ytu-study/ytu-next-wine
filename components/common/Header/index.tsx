@@ -23,8 +23,7 @@ const ScHeader = styled.header`
   align-items: center;
   width: 100%;
   height: 128px;
-  /* background-color: ${({ theme }) => theme.background.main}; */
-  /* border-bottom: ${({ theme }) => theme.border.main}; */
+  border-bottom: var(--border-main);
 `;
 
 const HeaderContainer = styled.div`

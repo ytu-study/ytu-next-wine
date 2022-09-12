@@ -47,6 +47,11 @@ const GlobalStyle = createGlobalStyle`
   }
   input, img, fieldset, iframe {
     border: 0;
+    background: none;
+
+    &::placeholder {
+      color: var(--text-third);
+    }
   }
   address, em, i {
     font-style: normal;
@@ -83,7 +88,7 @@ const GlobalStyle = createGlobalStyle`
     --bg-rating: #F9F7D6;
     --bg-ratingStar: #EFA000;
     --bg-label: #333333;
-    
+
     // border(common)
     --border-main: #DEDEDE solid 1px;
     --border-second: #E4E4E4 solid 1px;
@@ -92,7 +97,8 @@ const GlobalStyle = createGlobalStyle`
 
   body[data-theme="dark"] {
     // yet test!
-    --text-title: #111111;
+    --text-title: #FFFFFF;
+    --text-subTitle: #FFFFFF;
     --text-main: #FFFFFF;
     --bg-main: #1C1C1F;
     --border-main: #DEDEDE solid 1px;
