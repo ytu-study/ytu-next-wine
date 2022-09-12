@@ -1,4 +1,5 @@
 import MainLogo from "@/components/svg/MainLogo";
+import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 
@@ -6,7 +7,9 @@ const HeaderController = () => {
   return (
     <ScHeaderController>
       <ControlLogoSearch>
-        <MainLogo />
+        <Link href="/">
+          <MainLogo />
+        </Link>
         <SearchInput>
           <input placeholder="search any wine" />
         </SearchInput>
