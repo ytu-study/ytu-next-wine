@@ -1,4 +1,3 @@
-import BaseRefInput from '@/components/common/input/BaseRefInput';
 import For from '@/components/util/for';
 import type { NextPage } from 'next';
 import styled from 'styled-components';
@@ -23,7 +22,6 @@ const Home: NextPage = () => {
           </div>
         )}
       </For>
-      <BaseRefInput />
     </Div>
   );
 };

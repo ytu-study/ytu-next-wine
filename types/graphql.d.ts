@@ -16,6 +16,8 @@ export type Query = {
   __typename?: 'Query';
   /** 와인 상세목록 조회 */
   getWine: Wine;
+  /** 모든 와인 아이디 조회 */
+  getWineIds: Array<Scalars['String']>;
   /** 와인 목록 조회 */
   getWines: Array<Wine>;
 };

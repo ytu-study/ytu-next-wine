@@ -1,17 +1,27 @@
-import React, { useRef } from 'react'
+import React, { forwardRef, PropsWithChildren, useRef } from 'react'
+import styled from 'styled-components';
 
-interface OptionType {
-  
+interface PropsType {
+  onSubmit: (value: string) => void;
+  type?: string;
   placeholder?: string;
 }
 
+const BaseRefInput = ({ children, onSubmit, ...props }: PropsWithChildren<PropsType>) => {
+  const ref = useRef(null);
 
-
-const BaseRefInput = ({ placeholder = '' }: OptionType) => {
-  const inputRef = useRef<HTMLInputElement>(null);
   return (
-    <input placeholder={placeholder}/>
+    <ScBaseRefInput>
+      {children && <button onClick={() => onSubmit(ref.current.value)}>{children}</button>}
+      <input {...props} ref={ref} />
+    </ScBaseRefInput>
   )
-}
+};
+
+const ScBaseRefInput = styled.div`
+
+`;
+
+// BaseRefInput.displayName = "BaseRefInput";
 
 export default BaseRefInput
