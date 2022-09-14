@@ -18,7 +18,7 @@ const BaseRefInput = ({ children, onSubmit, ...props }: PropsWithChildren<PropsT
   )
 };
 
-const ScBaseRefInput = styled.div`
+export const ScBaseRefInput = styled.div`
 
 `;
 
