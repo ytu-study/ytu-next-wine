@@ -9,8 +9,7 @@ import { ServerStyleSheet } from "styled-components";
 
 const themeInitializerScript = `
       (function () {
-        const preferDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.body.dataset.theme = window.localStorage.getItem("theme") || (preferDarkMode ? "dark" : "light");
+        document.body.dataset.theme = window.localStorage.getItem("theme") || (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? "dark" : "light");
       })();
   `;
 
