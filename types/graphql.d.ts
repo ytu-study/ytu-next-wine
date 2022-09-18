@@ -124,50 +124,64 @@ export type ImageVariations = {
   smallSquare: Scalars['String'];
 };
 
-export type PaginationItems = {
-  display: Scalars['Float'];
-  page: Scalars['Float'];
-  totalCount: Scalars['Float'];
-};
-
-export type PaginationVivinoWine = PaginationItems & {
-  __typename?: 'PaginationVivinoWine';
-  display: Scalars['Float'];
+export type PaginatedVivinoWine = {
+  __typename?: 'PaginatedVivinoWine';
+  /** 현재 페이지당 보여줄 목록 수 */
+  display: Scalars['Int'];
+  /** 와인 정보 */
   items: Array<Maybe<VivinoWine>>;
-  page: Scalars['Float'];
-  totalCount: Scalars['Float'];
+  /** 현재 페이지 */
+  page: Scalars['Int'];
+  /** 총 개수 */
+  totalCount: Scalars['Int'];
 };
 
-export type PaginationWineCountry = PaginationItems & {
-  __typename?: 'PaginationWineCountry';
-  display: Scalars['Float'];
+export type PaginatedWineCountry = {
+  __typename?: 'PaginatedWineCountry';
+  /** 현재 페이지당 보여줄 목록 수 */
+  display: Scalars['Int'];
+  /** 와인 국가 */
   items: Array<Maybe<WineCountry>>;
-  page: Scalars['Float'];
-  totalCount: Scalars['Float'];
+  /** 현재 페이지 */
+  page: Scalars['Int'];
+  /** 총 개수 */
+  totalCount: Scalars['Int'];
 };
 
-export type PaginationWineFood = PaginationItems & {
-  __typename?: 'PaginationWineFood';
-  display: Scalars['Float'];
-  items: Array<Maybe<WineFood>>;
-  page: Scalars['Float'];
-  totalCount: Scalars['Float'];
-};
-
-export type PaginationWineGrape = PaginationItems & {
-  __typename?: 'PaginationWineGrape';
-  display: Scalars['Float'];
-  items: Array<Maybe<WineGrape>>;
-  page: Scalars['Float'];
-  totalCount: Scalars['Float'];
-};
-
-export type PaginationWineType = PaginationItems & {
-  __typename?: 'PaginationWineType';
-  display: Scalars['Float'];
+export type PaginatedWineType = {
+  __typename?: 'PaginatedWineType';
+  /** 현재 페이지당 보여줄 목록 수 */
+  display: Scalars['Int'];
+  /** 와인 타입 */
   items: Array<Maybe<WineType>>;
-  page: Scalars['Float'];
-  totalCount: Scalars['Float'];
+  /** 현재 페이지 */
+  page: Scalars['Int'];
+  /** 총 개수 */
+  totalCount: Scalars['Int'];
+};
+
+export type PaginationWineFood = {
+  __typename?: 'PaginationWineFood';
+  /** 현재 페이지당 보여줄 목록 수 */
+  display: Scalars['Int'];
+  /** 와인과 어울리는 음식 */
+  items: Array<Maybe<WineFood>>;
+  /** 현재 페이지 */
+  page: Scalars['Int'];
+  /** 총 개수 */
+  totalCount: Scalars['Int'];
+};
+
+export type PaginationWineGrape = {
+  __typename?: 'PaginationWineGrape';
+  /** 현재 페이지당 보여줄 목록 수 */
+  display: Scalars['Int'];
+  /** 와인 포도 품종 */
+  items: Array<Maybe<WineGrape>>;
+  /** 현재 페이지 */
+  page: Scalars['Int'];
+  /** 총 개수 */
+  totalCount: Scalars['Int'];
 };
 
 export type Price = {
@@ -194,11 +208,11 @@ export type Query = {
   /** 와인 상세목록 조회 */
   getVivinoWine: VivinoWine;
   /** 와인 목록 조회 */
-  getVivinoWines: PaginationVivinoWine;
+  getVivinoWines: PaginatedVivinoWine;
   /** 와인 상세목록 조회 */
   getWine: Wine;
   /** 와인 국가 목록 조회 */
-  getWineCountries: PaginationWineCountry;
+  getWineCountries: PaginatedWineCountry;
   /** 와인 국가 상세목록 조회 */
   getWineCountry: WineCountry;
   /** 와인과 어울리는 음식 상세목록 조회 */
@@ -214,7 +228,7 @@ export type Query = {
   /** 와인 타입 상세목록 조회 */
   getWineType?: Maybe<WineType>;
   /** 와인 타입 목록 조회 */
-  getWineTypes: PaginationWineType;
+  getWineTypes: PaginatedWineType;
   /** 와인 목록 조회 */
   getWines: Array<Wine>;
 };
