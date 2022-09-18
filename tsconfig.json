@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5" /* 컴파일할 ECMAScript 버전: 'ES3'(기본), 'ES2015', 'ES2016'... */,
+    "target": "ESNext" /* 컴파일할 ECMAScript 버전: 'ES3'(기본), 'ES2015', 'ES2016'... */,
     "lib": [
       /* 컴파일 과정에서 사용될 라이브러리 파일 */
       "dom",
@@ -21,7 +21,7 @@
     "allowSyntheticDefaultImports": true /* default export가 없는 모듈에서 기본호출 허용 */,
     "declaration": true /* 'type.d.ts' 파일 생성설정 */,
     "skipLibCheck": true /* 정의파일 타입 확인 건너뛸지 여부 */,
-    "strict": false /* use-strict 엄격타입 활성화 여부 */,
+    "strict": true /* use-strict 엄격타입 활성화 여부 */,
     "forceConsistentCasingInFileNames": true /* 같은 파일에 대한 일관되지 않은 케이스 참조 허용금지 여부 */,
     "noEmit": true /* 결과 파일 emit 여부 */,
     "esModuleInterop": true /* 모든 import의 namespace 생성을 통한 CommonJS 와 ES모듈 간 상호운용 여부 */,
