@@ -2,7 +2,7 @@ import React, { forwardRef, PropsWithChildren, useRef } from 'react'
 import styled from 'styled-components';
 
 interface PropsType {
-  onSubmit: (value: string) => void;
+  onSubmit?: (value: string) => void;
   type?: string;
   placeholder?: string;
 }

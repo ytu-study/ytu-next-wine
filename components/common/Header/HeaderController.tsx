@@ -10,7 +10,7 @@ const HeaderController = () => {
   return (
     <ScHeaderController>
       <ControlLogoSearch>
-        <Link href="/">
+        <Link href='/'>
           <MainLogo />
         </Link>
 
