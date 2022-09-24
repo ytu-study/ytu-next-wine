@@ -1,21 +1,17 @@
 import MainLogo from "@/components/svg/MainLogo";
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
-import BaseRefInput, { ScBaseRefInput } from "../input/BaseRefInput";
+import BaseInput, { ScBaseInput } from "@/components/common/input/BaseInput";
 
 const HeaderController = () => {
-  const inputRef = useRef(null);
-
   return (
     <ScHeaderController>
       <ControlLogoSearch>
-        <Link href='/'>
+        <Link href="/">
           <MainLogo />
         </Link>
-
-          <BaseRefInput onSubmit={(v) => console.log('v', v)} placeholder="search any wine">hi</BaseRefInput>
-
+        <BaseInput updateValue={v => console.log(v)} />
       </ControlLogoSearch>
     </ScHeaderController>
   );
@@ -27,18 +23,19 @@ const ScHeaderController = styled.div`
   align-items: center;
   height: 64px;
 
-  ${ScBaseRefInput} {
+  ${ScBaseInput} {
     width: 300px;
-  height: 40px;
-  margin-left: 40px;
-  padding: 4px 0 4px 48px;
-  border-radius: 20px;
-  border: var(--border-second);
+    height: 40px;
+    margin-left: 40px;
+    padding: 4px 0 4px 48px;
+    border-radius: 20px;
+    border: var(--border-second);
 
-  input {
-    width: 100%;
-    height: 32px;
-  }}
+    input {
+      width: 100%;
+      height: 32px;
+    }
+  }
 `;
 
 const ControlLogoSearch = styled.div`

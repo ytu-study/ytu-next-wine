@@ -10,16 +10,239 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  ObjectId: any;
+};
+
+export enum AcidityDescription {
+  High = 'High',
+  Low = 'Low',
+  Medium = 'Medium'
+}
+
+export type AryKeyword = {
+  __typename?: 'AryKeyword';
+  count: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['String'];
+};
+
+export enum BodyDescription {
+  FullBodied = 'FullBodied',
+  LightBodied = 'LightBodied',
+  MediumBodied = 'MediumBodied',
+  VeryFullBodied = 'VeryFullBodied'
+}
+
+export type BottleType = {
+  __typename?: 'BottleType';
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+  shortNamePlural: Scalars['String'];
+  volumeMl: Scalars['Int'];
+};
+
+export type Currency = {
+  __typename?: 'Currency';
+  code: CurrencyCode;
+  name: Scalars['String'];
+  prefix?: Maybe<Scalars['String']>;
+  /** @deprecated deprecated */
+  suffix?: Maybe<Scalars['String']>;
+};
+
+export enum CurrencyCode {
+  Ars = 'Ars',
+  Aud = 'Aud',
+  Clp = 'Clp',
+  Eur = 'Eur',
+  Krw = 'Krw',
+  Usd = 'Usd',
+  Zar = 'Zar'
+}
+
+export type Flavor = {
+  __typename?: 'Flavor';
+  group: Group;
+  primaryKeywords?: Maybe<Array<AryKeyword>>;
+  secondaryKeywords?: Maybe<Array<AryKeyword>>;
+  stats: FlavorStats;
+};
+
+export type FlavorStats = {
+  __typename?: 'FlavorStats';
+  count: Scalars['Int'];
+  score: Scalars['Int'];
+};
+
+export type FluffyVariations = {
+  __typename?: 'FluffyVariations';
+  small: Scalars['String'];
+};
+
+export type FoodBackgroundImage = {
+  __typename?: 'FoodBackgroundImage';
+  location: Scalars['String'];
+  variations: FoodVariations;
+};
+
+export type FoodVariations = {
+  __typename?: 'FoodVariations';
+  small: Scalars['String'];
+};
+
+export enum Group {
+  BlackFruit = 'BlackFruit',
+  CitrusFruit = 'CitrusFruit',
+  DriedFruit = 'DriedFruit',
+  Earth = 'Earth',
+  Floral = 'Floral',
+  Microbio = 'Microbio',
+  NonOak = 'NonOak',
+  Oak = 'Oak',
+  RedFruit = 'RedFruit',
+  Spices = 'Spices',
+  TreeFruit = 'TreeFruit',
+  TropicalFruit = 'TropicalFruit',
+  Vegetal = 'Vegetal'
+}
+
+export type ImageVariations = {
+  __typename?: 'ImageVariations';
+  bottleLarge?: Maybe<Scalars['String']>;
+  bottleMedium?: Maybe<Scalars['String']>;
+  bottleMediumSquare?: Maybe<Scalars['String']>;
+  bottleSmall?: Maybe<Scalars['String']>;
+  bottleSmallSquare?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  labelLarge?: Maybe<Scalars['String']>;
+  labelMedium?: Maybe<Scalars['String']>;
+  labelMediumSquare?: Maybe<Scalars['String']>;
+  labelSmallSquare?: Maybe<Scalars['String']>;
+  large: Scalars['String'];
+  medium: Scalars['String'];
+  mediumSquare: Scalars['String'];
+  smallSquare: Scalars['String'];
+};
+
+export type PaginatedVivinoWine = {
+  __typename?: 'PaginatedVivinoWine';
+  /** 현재 페이지당 보여줄 목록 수 */
+  display: Scalars['Int'];
+  /** 와인 정보 */
+  items: Array<VivinoWine>;
+  /** 현재 페이지 */
+  page: Scalars['Int'];
+  /** 총 개수 */
+  totalCount: Scalars['Int'];
+};
+
+export type PaginatedWineCountry = {
+  __typename?: 'PaginatedWineCountry';
+  /** 현재 페이지당 보여줄 목록 수 */
+  display: Scalars['Int'];
+  /** 와인 국가 */
+  items: Array<WineCountry>;
+  /** 현재 페이지 */
+  page: Scalars['Int'];
+  /** 총 개수 */
+  totalCount: Scalars['Int'];
+};
+
+export type PaginatedWineType = {
+  __typename?: 'PaginatedWineType';
+  /** 현재 페이지당 보여줄 목록 수 */
+  display: Scalars['Int'];
+  /** 와인 타입 */
+  items: Array<WineType>;
+  /** 현재 페이지 */
+  page: Scalars['Int'];
+  /** 총 개수 */
+  totalCount: Scalars['Int'];
+};
+
+export type PaginationWineFood = {
+  __typename?: 'PaginationWineFood';
+  /** 현재 페이지당 보여줄 목록 수 */
+  display: Scalars['Int'];
+  /** 와인과 어울리는 음식 */
+  items: Array<WineFood>;
+  /** 현재 페이지 */
+  page: Scalars['Int'];
+  /** 총 개수 */
+  totalCount: Scalars['Int'];
+};
+
+export type PaginationWineGrape = {
+  __typename?: 'PaginationWineGrape';
+  /** 현재 페이지당 보여줄 목록 수 */
+  display: Scalars['Int'];
+  /** 와인 포도 품종 */
+  items: Array<WineGrape>;
+  /** 현재 페이지 */
+  page: Scalars['Int'];
+  /** 총 개수 */
+  totalCount: Scalars['Int'];
+};
+
+export type Price = {
+  __typename?: 'Price';
+  amount: Scalars['Float'];
+  bottleType: BottleType;
+  bottleTypeId: Scalars['Int'];
+  currency: Currency;
+  id: Scalars['Int'];
+  sku: Scalars['String'];
+  type: Scalars['String'];
+  url: Scalars['String'];
+  visibility: Scalars['Int'];
+};
+
+export type PurpleVariations = {
+  __typename?: 'PurpleVariations';
+  large: Scalars['String'];
+  medium: Scalars['String'];
 };
 
 export type Query = {
   __typename?: 'Query';
   /** 와인 상세목록 조회 */
+  getVivinoWine: VivinoWine;
+  /** 와인 목록 조회 */
+  getVivinoWines: PaginatedVivinoWine;
+  /** 와인 상세목록 조회 */
   getWine: Wine;
+  /** 와인 국가 목록 조회 */
+  getWineCountries: PaginatedWineCountry;
+  /** 와인 국가 상세목록 조회 */
+  getWineCountry: WineCountry;
+  /** 와인과 어울리는 음식 상세목록 조회 */
+  getWineFood: WineFood;
+  /** 와인과 어울리는 음식 목록 조회 */
+  getWineFoods: PaginationWineFood;
+  /** 와인 포도 품종 상세목록 조회 */
+  getWineGrape: WineGrape;
+  /** 와인 포도 품종 목록 조회 */
+  getWineGrapes: PaginationWineGrape;
   /** 모든 와인 아이디 조회 */
   getWineIds: Array<Scalars['String']>;
+  /** 와인 타입 상세목록 조회 */
+  getWineType?: Maybe<WineType>;
+  /** 와인 타입 목록 조회 */
+  getWineTypes: PaginatedWineType;
   /** 와인 목록 조회 */
   getWines: Array<Wine>;
+};
+
+
+export type QueryGetVivinoWineArgs = {
+  id: Scalars['ObjectId'];
+};
+
+
+export type QueryGetVivinoWinesArgs = {
+  display?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -28,9 +251,184 @@ export type QueryGetWineArgs = {
 };
 
 
+export type QueryGetWineCountriesArgs = {
+  display?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryGetWineCountryArgs = {
+  id: Scalars['ObjectId'];
+};
+
+
+export type QueryGetWineFoodArgs = {
+  id: Scalars['ObjectId'];
+};
+
+
+export type QueryGetWineFoodsArgs = {
+  display?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryGetWineGrapeArgs = {
+  id: Scalars['ObjectId'];
+};
+
+
+export type QueryGetWineGrapesArgs = {
+  display?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryGetWineTypeArgs = {
+  id: Scalars['ObjectId'];
+};
+
+
+export type QueryGetWineTypesArgs = {
+  display?: InputMaybe<Scalars['Int']>;
+  page?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type QueryGetWinesArgs = {
   display?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<Scalars['Int']>;
+};
+
+export type Region = {
+  __typename?: 'Region';
+  backgroundImage?: Maybe<RegionBackgroundImage>;
+  /** @deprecated deprecated */
+  class: Scalars['String'];
+  country: WineCountry;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  nameEn: Scalars['String'];
+  parentId?: Maybe<Scalars['Int']>;
+  seoName: Scalars['String'];
+  statistics?: Maybe<RegionStatistics>;
+};
+
+export type RegionBackgroundImage = {
+  __typename?: 'RegionBackgroundImage';
+  location: Scalars['String'];
+  variations: PurpleVariations;
+};
+
+export type RegionStatistics = {
+  __typename?: 'RegionStatistics';
+  parentRegionsCount: Scalars['Int'];
+  subRegionsCount: Scalars['Int'];
+  wineriesCount: Scalars['Int'];
+  winesCount: Scalars['Int'];
+};
+
+export type StyleBackgroundImage = {
+  __typename?: 'StyleBackgroundImage';
+  location: Scalars['String'];
+  variations: FluffyVariations;
+};
+
+export type Taste = {
+  __typename?: 'Taste';
+  flavor: Array<Flavor>;
+  structure?: Maybe<TasteStructure>;
+};
+
+export type TasteStructure = {
+  __typename?: 'TasteStructure';
+  acidity: Scalars['Int'];
+  calculatedStructureCount: Scalars['Int'];
+  fizziness?: Maybe<Scalars['Int']>;
+  intensity: Scalars['Int'];
+  sweetness?: Maybe<Scalars['Int']>;
+  tannin?: Maybe<Scalars['Int']>;
+  userStructureCount: Scalars['Int'];
+};
+
+export type TentacledVariations = {
+  __typename?: 'TentacledVariations';
+  large: Scalars['String'];
+  medium: Scalars['String'];
+  small: Scalars['String'];
+};
+
+export type TopList = {
+  __typename?: 'TopList';
+  id: Scalars['Int'];
+  location: Scalars['String'];
+  name: Scalars['String'];
+  seoName: Scalars['String'];
+  type: Scalars['Int'];
+  year: Scalars['String'];
+};
+
+export type TopListRanking = {
+  __typename?: 'TopListRanking';
+  description?: Maybe<Scalars['String']>;
+  previousRank: Scalars['Int'];
+  rank: Scalars['Int'];
+  topList: TopList;
+};
+
+export type Vintage = {
+  __typename?: 'Vintage';
+  hasValidRatings: Scalars['Boolean'];
+  id: Scalars['Int'];
+  image: VintageImage;
+  name: Scalars['String'];
+  seoName: Scalars['String'];
+  statistics: VintageStatistics;
+  topListRankings?: Maybe<Array<TopListRanking>>;
+  wine: VintageWine;
+  year: Scalars['String'];
+};
+
+export type VintageImage = {
+  __typename?: 'VintageImage';
+  location: Scalars['String'];
+  variations: ImageVariations;
+};
+
+export type VintageStatistics = {
+  __typename?: 'VintageStatistics';
+  labelsCount: Scalars['Int'];
+  ratingsAverage: Scalars['Float'];
+  ratingsCount: Scalars['Int'];
+  status: Scalars['String'];
+  wineRatingsAverage: Scalars['Float'];
+  wineRatingsCount: Scalars['Int'];
+  wineStatus: Scalars['String'];
+};
+
+export type VintageWine = {
+  __typename?: 'VintageWine';
+  hasValidRatings: Scalars['Boolean'];
+  id: Scalars['Int'];
+  isNatural: Scalars['Boolean'];
+  name: Scalars['String'];
+  region: Region;
+  seoName: Scalars['String'];
+  statistics: WineStatistics;
+  style?: Maybe<WineStyle>;
+  taste: Taste;
+  typeId: Scalars['Int'];
+  vintageType: Scalars['Int'];
+  winery: Winery;
+};
+
+/** 와인 정보 */
+export type VivinoWine = {
+  __typename?: 'VivinoWine';
+  /** objectId */
+  _id: Scalars['ID'];
+  price: Price;
+  vintage: Vintage;
 };
 
 /** 와인 정보 */
@@ -70,6 +468,102 @@ export type Wine = {
   vintage?: Maybe<Scalars['Int']>;
   /** 와이너리 */
   winery: Scalars['String'];
+};
+
+/** 와인 국가 */
+export type WineCountry = {
+  __typename?: 'WineCountry';
+  /** objectId */
+  _id: Scalars['ID'];
+  code: Scalars['String'];
+  currency: Currency;
+  mostUsedGrapes: Array<WineGrape>;
+  name: Scalars['String'];
+  nativeName: Scalars['String'];
+  regionsCount: Scalars['Int'];
+  seoName: Scalars['String'];
+  usersCount: Scalars['Int'];
+  wineriesCount: Scalars['Int'];
+  winesCount: Scalars['Int'];
+};
+
+/** 와인과 어울리는 음식 */
+export type WineFood = {
+  __typename?: 'WineFood';
+  /** objectId */
+  _id: Scalars['ID'];
+  backgroundImage: FoodBackgroundImage;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+};
+
+/** 와인 포도 품종 */
+export type WineGrape = {
+  __typename?: 'WineGrape';
+  /** objectId */
+  _id: Scalars['ID'];
+  hasDetailedInfo: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  seoName: Scalars['String'];
+  winesCount: Scalars['Int'];
+};
+
+export type WineStatistics = {
+  __typename?: 'WineStatistics';
+  labelsCount: Scalars['Int'];
+  ratingsAverage: Scalars['Float'];
+  ratingsCount: Scalars['Int'];
+  status: Scalars['String'];
+  vintagesCount: Scalars['Int'];
+};
+
+export type WineStyle = {
+  __typename?: 'WineStyle';
+  acidity: Scalars['Int'];
+  acidityDescription: AcidityDescription;
+  backgroundImage?: Maybe<StyleBackgroundImage>;
+  blurb?: Maybe<Scalars['String']>;
+  body: Scalars['Int'];
+  bodyDescription: BodyDescription;
+  country: WineCountry;
+  description?: Maybe<Scalars['String']>;
+  food?: Maybe<Array<WineFood>>;
+  grapes: Array<WineGrape>;
+  id: Scalars['Int'];
+  image?: Maybe<Scalars['String']>;
+  interestingFacts?: Maybe<Array<Scalars['String']>>;
+  name: Scalars['String'];
+  region?: Maybe<Region>;
+  regionalName: Scalars['String'];
+  seoName: Scalars['String'];
+  varietalName: Scalars['String'];
+  wineTypeId: Scalars['Int'];
+};
+
+/** 와인 타입 */
+export type WineType = {
+  __typename?: 'WineType';
+  /** objectId */
+  _id: Scalars['ID'];
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  winesCount: Scalars['Int'];
+};
+
+export type Winery = {
+  __typename?: 'Winery';
+  backgroundImage?: Maybe<WineryBackgroundImage>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  seoName: Scalars['String'];
+  status: Scalars['Int'];
+};
+
+export type WineryBackgroundImage = {
+  __typename?: 'WineryBackgroundImage';
+  location: Scalars['String'];
+  variations: TentacledVariations;
 };
 
 export type Unnamed_1_QueryVariables = Exact<{
