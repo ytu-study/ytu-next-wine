@@ -8,12 +8,11 @@ type Props = {
   disabled?: boolean;
   onChange?: (text: string) => void;
   onFocus?: () => void;
-  useFocusInit?: boolean;
   onBlur?: () => void;
 };
 
-const BaseInput = ({ placeholder, disabled = false, initValue, onChange, onFocus, useFocusInit, onBlur }: Props) => {
-  const { value, setValue, onChangeInput } = useInput({ initValue });
+const BaseInput = ({ placeholder, disabled = false, initValue, onChange, onFocus, onBlur }: Props) => {
+  const { value, onChangeInput } = useInput({ initValue });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) return;
@@ -22,7 +21,6 @@ const BaseInput = ({ placeholder, disabled = false, initValue, onChange, onFocus
   };
 
   const handleFocus = () => {
-    if (useFocusInit) setValue("");
     if (onFocus) onFocus();
   };
 

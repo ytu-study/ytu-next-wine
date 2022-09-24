@@ -19,13 +19,6 @@ export enum AcidityDescription {
   Medium = 'Medium'
 }
 
-export type AryKeyword = {
-  __typename?: 'AryKeyword';
-  count: Scalars['Int'];
-  id: Scalars['Int'];
-  name: Scalars['String'];
-};
-
 export enum BodyDescription {
   FullBodied = 'FullBodied',
   LightBodied = 'LightBodied',
@@ -42,10 +35,14 @@ export type BottleType = {
   volumeMl: Scalars['Int'];
 };
 
+/** 통화 정보 */
 export type Currency = {
   __typename?: 'Currency';
+  /** 통화 코드 */
   code: CurrencyCode;
+  /** 통화 이름 */
   name: Scalars['String'];
+  /** 통화 표시 부호 */
   prefix?: Maybe<Scalars['String']>;
   /** @deprecated deprecated */
   suffix?: Maybe<Scalars['String']>;
@@ -61,17 +58,25 @@ export enum CurrencyCode {
   Zar = 'Zar'
 }
 
+/** 풍미 정보 */
 export type Flavor = {
   __typename?: 'Flavor';
+  /** 풍미 그룹 */
   group: Group;
-  primaryKeywords?: Maybe<Array<AryKeyword>>;
-  secondaryKeywords?: Maybe<Array<AryKeyword>>;
+  /** 일반적인 풍미 키워드 */
+  primaryKeywords?: Maybe<Array<Keyword>>;
+  /** 이차적인 풍미 키워드 */
+  secondaryKeywords?: Maybe<Array<Keyword>>;
+  /** 풍미 통계 */
   stats: FlavorStats;
 };
 
+/** 풍미 통계 정보 */
 export type FlavorStats = {
   __typename?: 'FlavorStats';
+  /** 풍미 수 */
   count: Scalars['Int'];
+  /** 풍미 점수 */
   score: Scalars['Int'];
 };
 
@@ -82,6 +87,7 @@ export type FluffyVariations = {
 
 export type FoodBackgroundImage = {
   __typename?: 'FoodBackgroundImage';
+  /** @deprecated deprecated */
   location: Scalars['String'];
   variations: FoodVariations;
 };
@@ -125,12 +131,23 @@ export type ImageVariations = {
   smallSquare: Scalars['String'];
 };
 
+/** 키워드 정보 */
+export type Keyword = {
+  __typename?: 'Keyword';
+  /** 키워드 수 */
+  count: Scalars['Int'];
+  /** 키워드 ID */
+  id: Scalars['Int'];
+  /** 키워드 이름 */
+  name: Scalars['String'];
+};
+
 export type PaginatedVivinoWine = {
   __typename?: 'PaginatedVivinoWine';
   /** 현재 페이지당 보여줄 목록 수 */
   display: Scalars['Int'];
   /** 와인 정보 */
-  items: Array<VivinoWine>;
+  items: Array<VivinoWineEntity>;
   /** 현재 페이지 */
   page: Scalars['Int'];
   /** 총 개수 */
@@ -142,7 +159,7 @@ export type PaginatedWineCountry = {
   /** 현재 페이지당 보여줄 목록 수 */
   display: Scalars['Int'];
   /** 와인 국가 */
-  items: Array<WineCountry>;
+  items: Array<WineCountryEntity>;
   /** 현재 페이지 */
   page: Scalars['Int'];
   /** 총 개수 */
@@ -154,7 +171,7 @@ export type PaginatedWineType = {
   /** 현재 페이지당 보여줄 목록 수 */
   display: Scalars['Int'];
   /** 와인 타입 */
-  items: Array<WineType>;
+  items: Array<WineTypeEntity>;
   /** 현재 페이지 */
   page: Scalars['Int'];
   /** 총 개수 */
@@ -166,7 +183,7 @@ export type PaginationWineFood = {
   /** 현재 페이지당 보여줄 목록 수 */
   display: Scalars['Int'];
   /** 와인과 어울리는 음식 */
-  items: Array<WineFood>;
+  items: Array<WineFoodEntity>;
   /** 현재 페이지 */
   page: Scalars['Int'];
   /** 총 개수 */
@@ -178,7 +195,7 @@ export type PaginationWineGrape = {
   /** 현재 페이지당 보여줄 목록 수 */
   display: Scalars['Int'];
   /** 와인 포도 품종 */
-  items: Array<WineGrape>;
+  items: Array<WineGrapeEntity>;
   /** 현재 페이지 */
   page: Scalars['Int'];
   /** 총 개수 */
@@ -187,10 +204,14 @@ export type PaginationWineGrape = {
 
 export type Price = {
   __typename?: 'Price';
+  /** 가격 */
   amount: Scalars['Float'];
+  /** 병 유형 */
   bottleType: BottleType;
   bottleTypeId: Scalars['Int'];
+  /** 통화 */
   currency: Currency;
+  /** 가격 ID */
   id: Scalars['Int'];
   sku: Scalars['String'];
   type: Scalars['String'];
@@ -207,7 +228,7 @@ export type PurpleVariations = {
 export type Query = {
   __typename?: 'Query';
   /** 와인 상세목록 조회 */
-  getVivinoWine: VivinoWine;
+  getVivinoWine: VivinoWineEntity;
   /** 와인 목록 조회 */
   getVivinoWines: PaginatedVivinoWine;
   /** 와인 상세목록 조회 */
@@ -215,19 +236,19 @@ export type Query = {
   /** 와인 국가 목록 조회 */
   getWineCountries: PaginatedWineCountry;
   /** 와인 국가 상세목록 조회 */
-  getWineCountry: WineCountry;
+  getWineCountry: WineCountryEntity;
   /** 와인과 어울리는 음식 상세목록 조회 */
-  getWineFood: WineFood;
+  getWineFood: WineFoodEntity;
   /** 와인과 어울리는 음식 목록 조회 */
   getWineFoods: PaginationWineFood;
   /** 와인 포도 품종 상세목록 조회 */
-  getWineGrape: WineGrape;
+  getWineGrape: WineGrapeEntity;
   /** 와인 포도 품종 목록 조회 */
   getWineGrapes: PaginationWineGrape;
   /** 모든 와인 아이디 조회 */
   getWineIds: Array<Scalars['String']>;
   /** 와인 타입 상세목록 조회 */
-  getWineType?: Maybe<WineType>;
+  getWineType?: Maybe<WineTypeEntity>;
   /** 와인 타입 목록 조회 */
   getWineTypes: PaginatedWineType;
   /** 와인 목록 조회 */
@@ -300,17 +321,24 @@ export type QueryGetWinesArgs = {
   page?: InputMaybe<Scalars['Int']>;
 };
 
+/** 와인 지역 정보 */
 export type Region = {
   __typename?: 'Region';
+  /** 와인 지역 이미지 */
   backgroundImage?: Maybe<RegionBackgroundImage>;
-  /** @deprecated deprecated */
-  class: Scalars['String'];
+  /** 와인 국가 */
   country: WineCountry;
+  /** 와인 지역 ID */
   id: Scalars['Int'];
+  /** 와인 지역 이름 */
   name: Scalars['String'];
+  /** 와인 지역 이름 */
   nameEn: Scalars['String'];
+  /** @deprecated deprecated */
   parentId?: Maybe<Scalars['Int']>;
+  /** 와인 지역 이름(kebab-case) */
   seoName: Scalars['String'];
+  /** @deprecated deprecated */
   statistics?: Maybe<RegionStatistics>;
 };
 
@@ -334,20 +362,29 @@ export type StyleBackgroundImage = {
   variations: FluffyVariations;
 };
 
+/** 와인 맛 정보 */
 export type Taste = {
   __typename?: 'Taste';
+  /** 와인 풍미 */
   flavor: Array<Flavor>;
+  /** 와인 맛 구조 */
   structure?: Maybe<TasteStructure>;
 };
 
+/** 와인 맛 정보 */
 export type TasteStructure = {
   __typename?: 'TasteStructure';
-  acidity: Scalars['Int'];
+  /** 산도 */
+  acidity: Scalars['Float'];
   calculatedStructureCount: Scalars['Int'];
-  fizziness?: Maybe<Scalars['Int']>;
-  intensity: Scalars['Int'];
-  sweetness?: Maybe<Scalars['Int']>;
-  tannin?: Maybe<Scalars['Int']>;
+  /** 탄산 */
+  fizziness?: Maybe<Scalars['Float']>;
+  /** 고유한 맛의 강도 */
+  intensity: Scalars['Float'];
+  /** 당도 */
+  sweetness?: Maybe<Scalars['Float']>;
+  /** 탄닌 */
+  tannin?: Maybe<Scalars['Float']>;
   userStructureCount: Scalars['Int'];
 };
 
@@ -376,16 +413,26 @@ export type TopListRanking = {
   topList: TopList;
 };
 
+/** 와인 빈티지 정보 */
 export type Vintage = {
   __typename?: 'Vintage';
+  /** @deprecated deprecated */
   hasValidRatings: Scalars['Boolean'];
+  /** 빈티지 ID */
   id: Scalars['Int'];
+  /** 와인 이미지 */
   image: VintageImage;
+  /** 와이너리 + 와인 + 빈티지연도 이름 */
   name: Scalars['String'];
+  /** 와이너리 + 와인 + 빈티지 이름(kebab-case) */
   seoName: Scalars['String'];
+  /** 와인 통계 */
   statistics: VintageStatistics;
+  /** @deprecated deprecated */
   topListRankings?: Maybe<Array<TopListRanking>>;
+  /** 와인 */
   wine: VintageWine;
+  /** 빈티지 연도 */
   year: Scalars['String'];
 };
 
@@ -395,39 +442,62 @@ export type VintageImage = {
   variations: ImageVariations;
 };
 
+/** 와인 통계 정보 */
 export type VintageStatistics = {
   __typename?: 'VintageStatistics';
+  /** ??? */
   labelsCount: Scalars['Int'];
+  /** 평점 */
   ratingsAverage: Scalars['Float'];
+  /** 평점 수 */
   ratingsCount: Scalars['Int'];
+  /** ??? */
   status: Scalars['String'];
+  /** ??? */
   wineRatingsAverage: Scalars['Float'];
+  /** ??? */
   wineRatingsCount: Scalars['Int'];
+  /** ??? */
   wineStatus: Scalars['String'];
 };
 
+/** 와인 정보 */
 export type VintageWine = {
   __typename?: 'VintageWine';
+  /** @deprecated deprecated */
   hasValidRatings: Scalars['Boolean'];
+  /** 와인 ID */
   id: Scalars['Int'];
+  /** 천연 와인 여부 */
   isNatural: Scalars['Boolean'];
+  /** 와인 이름 */
   name: Scalars['String'];
+  /** 와인 생산 지역 */
   region: Region;
+  /** 와인 이름(kebab-case) */
   seoName: Scalars['String'];
+  /** 와인 통계 */
   statistics: WineStatistics;
+  /** 와인 스타일 */
   style?: Maybe<WineStyle>;
+  /** 와인 맛 */
   taste: Taste;
+  /** 와인 타입 ID */
   typeId: Scalars['Int'];
+  /** ??? */
   vintageType: Scalars['Int'];
+  /** 와이너리 */
   winery: Winery;
 };
 
 /** 와인 정보 */
-export type VivinoWine = {
-  __typename?: 'VivinoWine';
+export type VivinoWineEntity = {
+  __typename?: 'VivinoWineEntity';
   /** objectId */
-  _id: Scalars['ID'];
+  id: Scalars['ID'];
+  /** 와인 가격 */
   price: Price;
+  /** 와인 빈티지 */
   vintage: Vintage;
 };
 
@@ -470,17 +540,46 @@ export type Wine = {
   winery: Scalars['String'];
 };
 
-/** 와인 국가 */
+/** 와인 국가 정보 */
 export type WineCountry = {
   __typename?: 'WineCountry';
-  /** objectId */
-  _id: Scalars['ID'];
+  /** 국가 코드 */
   code: Scalars['String'];
+  /** 통화 */
   currency: Currency;
+  /** 가장 많이 사용하는 포도 품종 */
   mostUsedGrapes: Array<WineGrape>;
+  /** 국가 이름 */
   name: Scalars['String'];
+  /** 국가 이름(국가 언어) */
   nativeName: Scalars['String'];
+  /** 국가 조회수 */
   regionsCount: Scalars['Int'];
+  /** 국가 이름(kebab-case) */
+  seoName: Scalars['String'];
+  usersCount: Scalars['Int'];
+  wineriesCount: Scalars['Int'];
+  winesCount: Scalars['Int'];
+};
+
+/** 와인 국가 */
+export type WineCountryEntity = {
+  __typename?: 'WineCountryEntity';
+  /** 국가 코드 */
+  code: Scalars['String'];
+  /** 통화 */
+  currency: Currency;
+  /** objectId */
+  id: Scalars['ID'];
+  /** 가장 많이 사용하는 포도 품종 */
+  mostUsedGrapes: Array<WineGrape>;
+  /** 국가 이름 */
+  name: Scalars['String'];
+  /** 국가 이름(국가 언어) */
+  nativeName: Scalars['String'];
+  /** 국가 조회수 */
+  regionsCount: Scalars['Int'];
+  /** 국가 이름(kebab-case) */
   seoName: Scalars['String'];
   usersCount: Scalars['Int'];
   wineriesCount: Scalars['Int'];
@@ -490,22 +589,56 @@ export type WineCountry = {
 /** 와인과 어울리는 음식 */
 export type WineFood = {
   __typename?: 'WineFood';
-  /** objectId */
-  _id: Scalars['ID'];
+  /** 음식 이미지 */
   backgroundImage: FoodBackgroundImage;
+  /** 음식 ID */
   id: Scalars['Int'];
+  /** 음식 이름 */
+  name: Scalars['String'];
+};
+
+/** 와인과 어울리는 음식 */
+export type WineFoodEntity = {
+  __typename?: 'WineFoodEntity';
+  /** 음식 이미지 */
+  backgroundImage: FoodBackgroundImage;
+  /** 음식 ID */
+  foodId: Scalars['Int'];
+  /** objectId */
+  id: Scalars['ID'];
+  /** 음식 이름 */
   name: Scalars['String'];
 };
 
 /** 와인 포도 품종 */
 export type WineGrape = {
   __typename?: 'WineGrape';
-  /** objectId */
-  _id: Scalars['ID'];
+  /** @deprecated deprecated */
   hasDetailedInfo: Scalars['Int'];
+  /** 포도 ID */
   id: Scalars['Int'];
+  /** 포도 이름 */
   name: Scalars['String'];
+  /** 포도 이름(kebab-case) */
   seoName: Scalars['String'];
+  /** 포도 조회수 */
+  winesCount: Scalars['Int'];
+};
+
+/** 와인 포도 품종 */
+export type WineGrapeEntity = {
+  __typename?: 'WineGrapeEntity';
+  /** 포도 ID */
+  grapeId: Scalars['Int'];
+  /** @deprecated deprecated */
+  hasDetailedInfo: Scalars['Int'];
+  /** objectId */
+  id: Scalars['ID'];
+  /** 포도 이름 */
+  name: Scalars['String'];
+  /** 포도 이름(kebab-case) */
+  seoName: Scalars['String'];
+  /** 포도 조회수 */
   winesCount: Scalars['Int'];
 };
 
@@ -518,45 +651,71 @@ export type WineStatistics = {
   vintagesCount: Scalars['Int'];
 };
 
+/** 와인 스타일 정보 */
 export type WineStyle = {
   __typename?: 'WineStyle';
+  /** 산도 */
   acidity: Scalars['Int'];
+  /** 산도(High, Medium, Low) */
   acidityDescription: AcidityDescription;
   backgroundImage?: Maybe<StyleBackgroundImage>;
+  /** 와인에 대한 짧은 광고 */
   blurb?: Maybe<Scalars['String']>;
+  /** 바디감 */
   body: Scalars['Int'];
+  /** 바디감(Full-bodied, Light-bodied, Medium-bodied, Very full-bodied */
   bodyDescription: BodyDescription;
-  country: WineCountry;
+  /** 와인 국가 */
+  country: WineCountryEntity;
+  /** 와인 스타일 설명 */
   description?: Maybe<Scalars['String']>;
+  /** 와인과 어울리는 음식 */
   food?: Maybe<Array<WineFood>>;
+  /** 와인 포도 품종 */
   grapes: Array<WineGrape>;
+  /** 와인 스타일 ID */
   id: Scalars['Int'];
-  image?: Maybe<Scalars['String']>;
+  /** 흥미로운 사실 */
   interestingFacts?: Maybe<Array<Scalars['String']>>;
+  /** 와인 스타일 */
   name: Scalars['String'];
+  /** 와인 지역 */
   region?: Maybe<Region>;
+  /** 지역명 */
   regionalName: Scalars['String'];
+  /** 와인 스타일(kebab-case) */
   seoName: Scalars['String'];
+  /** 버라이어털(포도 품종 이름으로 딴 와인) 이름 */
   varietalName: Scalars['String'];
+  /** 와인 타입 ID */
   wineTypeId: Scalars['Int'];
 };
 
 /** 와인 타입 */
-export type WineType = {
-  __typename?: 'WineType';
+export type WineTypeEntity = {
+  __typename?: 'WineTypeEntity';
   /** objectId */
-  _id: Scalars['ID'];
-  id: Scalars['Int'];
+  id: Scalars['ID'];
+  /** 와인 타입 이름 */
   name: Scalars['String'];
+  /** 와인 타입 ID */
+  typeId: Scalars['Int'];
+  /** 와인 타입 조회수 */
   winesCount: Scalars['Int'];
 };
 
+/** 와이너리 정보 */
 export type Winery = {
   __typename?: 'Winery';
+  /** 와이너리 이미지 */
   backgroundImage?: Maybe<WineryBackgroundImage>;
+  /** 와이너리 ID */
   id: Scalars['Int'];
+  /** 와이너리 이름 */
   name: Scalars['String'];
+  /** 와이너리 이름(kebab-case) */
   seoName: Scalars['String'];
+  /** @deprecated deprecated */
   status: Scalars['Int'];
 };
 
