@@ -7,7 +7,7 @@ const links = [
   { text: "Wines", path: "/list" },
   { text: "Grapes", path: "/list" },
   { text: "Query", path: "/query" },
-  { text: "Detail", path: "/detail/dd" },
+  { text: "Detail", path: "/detail/d04d7cd08-1984-420c-93ec-e40c13687145" },
 ];
 
 const HeaderNavigator = () => {
