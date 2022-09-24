@@ -10,6 +10,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  ObjectId: any;
 };
 
 export enum AcidityDescription {
@@ -235,7 +236,7 @@ export type Query = {
 
 
 export type QueryGetVivinoWineArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ObjectId'];
 };
 
 
@@ -257,12 +258,12 @@ export type QueryGetWineCountriesArgs = {
 
 
 export type QueryGetWineCountryArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ObjectId'];
 };
 
 
 export type QueryGetWineFoodArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ObjectId'];
 };
 
 
@@ -273,7 +274,7 @@ export type QueryGetWineFoodsArgs = {
 
 
 export type QueryGetWineGrapeArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ObjectId'];
 };
 
 
@@ -284,7 +285,7 @@ export type QueryGetWineGrapesArgs = {
 
 
 export type QueryGetWineTypeArgs = {
-  id: Scalars['ID'];
+  id: Scalars['ObjectId'];
 };
 
 
