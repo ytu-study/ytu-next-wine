@@ -5,13 +5,14 @@ type EachArray = readonly unknown[];
 type Union<T> = T extends EachArray ? (T extends readonly (infer R)[] ? R : never) : T extends EachObject ? Union<Entries<T>> : never;
 
 type ForProps<T extends EachObject | EachArray, U extends Union<T>> = {
-  each: T;
+  each?: T;
   children(item: U, index: number, raw: T): ReactNode;
 };
 
-function isEachArray(each): each is EachArray {
+function isEachArray(each: unknown): each is EachArray {
   return Array.isArray(each);
 }
+
 /**
  * @example
  * - Object
@@ -32,6 +33,7 @@ function isEachArray(each): each is EachArray {
  * </For>
  */
 export default function For<Raw extends EachObject | EachArray, Item extends Union<Raw>>({ children, each }: ForProps<Raw, Item>) {
+  if (!each) return null;
   if (isEachArray(each)) return <>{each.map((item, index, raw) => children(item as Item, index, raw as Raw))}</>;
   return <>{Object.entries(each).map((item, index, raw) => children(item as Item, index, raw as unknown as Raw))}</>;
 }

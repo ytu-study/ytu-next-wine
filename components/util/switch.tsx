@@ -1,23 +1,17 @@
-import React, { PropsWithChildren, ReactElement, ReactNode } from 'react';
+import { isNotEmpty } from '@/utils/isNotEmpty';
+import React, { JSXElementConstructor, ReactElement, ReactNode } from 'react';
 
-type CaseProps<T = unknown> = PropsWithChildren<{ when: T }>;
-type SwitchProps = { children: ReactElement | ReactElement[]; fallback?: ReactNode };
+type SwitchProps = { children: ReactNode | ReactNode[]; fallback?: ReactNode; multiple?: boolean };
+type CaseProps<T> = Pick<SwitchProps, 'children'> & { when: T };
 
 class SwitchCaseNotFoundException extends Error {
-  name: 'SwitchCaseNotFoundException';
+  name = 'SwitchCaseNotFoundException';
   message = '<Switch.Case> Component not found.';
 }
 
 class SwitchCaseInvalidException extends Error {
-  name: 'switchCaseInvalidException';
+  name = 'switchCaseInvalidException';
   message = 'Only <Switch.Case> Component is available.';
-}
-
-function isNotEmpty<T>(item?: T): boolean {
-  if (!item) return false;
-  if (Array.isArray(item)) return !!item.length;
-  if (item.constructor === Object) return isNotEmpty(Object.keys(item));
-  return true;
 }
 
 function Case<T>({ children }: CaseProps<T>) {
@@ -38,12 +32,12 @@ function Case<T>({ children }: CaseProps<T>) {
  * // result
  * <div>1. true</div>
  */
-export function Switch({ children, fallback }: SwitchProps) {
-  const matchChildren = (Array.isArray(children) ? children : [children]).find(element => {
-    if (!element) throw new SwitchCaseNotFoundException();
+export function Switch({ multiple, fallback, children }: SwitchProps) {
+  const matchChildren = (Array.isArray(children) ? children : [children])[multiple ? 'filter' : 'find'](el => {
+    if (!el) throw new SwitchCaseNotFoundException();
 
-    const component = element.type as { name: string };
-    if (component.name !== Case.name) throw new SwitchCaseInvalidException();
+    const { type, ...element } = el as ReactElement<CaseProps<boolean>, JSXElementConstructor<CaseProps<boolean>>>;
+    if (type.name !== Case.name) throw new SwitchCaseInvalidException();
 
     return isNotEmpty(element.props.when);
   });
