@@ -3,22 +3,22 @@ import styled from "styled-components";
 import useInput from "@/hooks/useInput";
 
 type Props = {
-  updateValue: (text: string) => void;
   initValue?: string;
   placeholder?: string;
   disabled?: boolean;
+  onChange?: (text: string) => void;
   onFocus?: () => void;
   useFocusInit?: boolean;
   onBlur?: () => void;
 };
 
-const TextInput = ({ placeholder, disabled = false, initValue, updateValue, onFocus, useFocusInit, onBlur }: Props) => {
-  const { value, setValue, onChange } = useInput({ initValue });
+const BaseInput = ({ placeholder, disabled = false, initValue, onChange, onFocus, useFocusInit, onBlur }: Props) => {
+  const { value, setValue, onChangeInput } = useInput({ initValue });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) return;
-    onChange(e);
-    updateValue(e.target.value);
+    onChangeInput(e);
+    if (onChange) onChange(e.target.value);
   };
 
   const handleFocus = () => {
@@ -26,15 +26,9 @@ const TextInput = ({ placeholder, disabled = false, initValue, updateValue, onFo
     if (onFocus) onFocus();
   };
 
-  return (
-    <div className={`${disabled ? "disabled" : ""}`}>
-      <input placeholder={placeholder} value={value} onChange={handleChange} onFocus={handleFocus} onBlur={onBlur} />
-    </div>
-  );
+  return <ScBaseInput placeholder={placeholder} value={value} onChange={handleChange} onFocus={handleFocus} onBlur={onBlur} disabled={disabled} />;
 };
 
-export const ScBaseInput = styled.div`
-  border: 1px solid red;
-`;
+export const ScBaseInput = styled.input``;
 
-export default TextInput;
+export default BaseInput;

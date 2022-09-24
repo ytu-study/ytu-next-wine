@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 interface OptionType {
   initValue?: string;
@@ -8,7 +8,7 @@ interface OptionType {
 interface ReturnType {
   value: string;
   setValue: (value: string) => void;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isValid: { valid: boolean };
 }
 
@@ -16,15 +16,15 @@ const useInput = ({ initValue, validate }: OptionType): ReturnType => {
   const [value, setValue] = useState<string>(initValue || "");
   const [valid, setValid] = useState<boolean>(false);
 
-  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { value },
-    } = e;
-    setValue(value);
-    if (validate) setValid(true);
-  }, []);
+  const onChangeInput = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value);
+      if (validate) setValid(true);
+    },
+    [initValue],
+  );
 
-  return { value, setValue, onChange, isValid: { valid } };
+  return { value, setValue, onChangeInput, isValid: { valid } };
 };
 
 export default useInput;
