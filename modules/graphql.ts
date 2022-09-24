@@ -6,22 +6,23 @@ import { ScreamingSnakeCase } from 'type-fest';
 import documents from '@/graphql';
 
 type QueryResponse = Omit<Query, '__typename'>;
-export type QueryType = { readonly [P in keyof QueryResponse as ScreamingSnakeCase<keyof QueryResponse>]: P };
+export type QueryType = {
+  readonly [P in keyof QueryResponse as ScreamingSnakeCase<keyof Pick<QueryResponse, P>>]: P;
+};
 
 class GraphQLClient extends _GraphQLClient implements QueryType {
   readonly GET_VIVINO_WINE = 'getVivinoWine';
   readonly GET_VIVINO_WINES = 'getVivinoWines';
-  readonly GET_WINE = 'getVivinoWine';
-  readonly GET_WINES = 'getVivinoWine';
-  readonly GET_WINE_COUNTRIES = 'getVivinoWine';
-  readonly GET_WINE_COUNTRY = 'getVivinoWine';
-  readonly GET_WINE_FOOD = 'getVivinoWine';
-  readonly GET_WINE_FOODS = 'getVivinoWine';
-  readonly GET_WINE_GRAPE = 'getVivinoWine';
-  readonly GET_WINE_GRAPES = 'getVivinoWine';
-  readonly GET_WINE_IDS = 'getVivinoWine';
-  readonly GET_WINE_TYPE = 'getVivinoWine';
-  readonly GET_WINE_TYPES = 'getVivinoWine';
+  readonly GET_WINE = 'getWine';
+  readonly GET_WINES = 'getWines';
+  readonly GET_WINE_COUNTRIES = 'getWineCountries';
+  readonly GET_WINE_COUNTRY = 'getWineCountry';
+  readonly GET_WINE_FOOD = 'getWineFood';
+  readonly GET_WINE_FOODS = 'getWineFoods';
+  readonly GET_WINE_GRAPE = 'getWineGrape';
+  readonly GET_WINE_GRAPES = 'getWineGrapes';
+  readonly GET_WINE_IDS = 'getWineIds';
+  readonly GET_WINE_TYPES = 'getWineTypes';
 
   constructor() {
     super(process.env.NEXT_PUBLIC_API_URL);
