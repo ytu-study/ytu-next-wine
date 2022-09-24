@@ -1,9 +1,9 @@
-import snakeCase from 'lodash/snakeCase';
-import { Query } from '@/types/graphql';
-import { GraphQLClient as _GraphQLClient, Variables } from 'graphql-request';
-import * as Dom from 'graphql-request/src/types.dom';
-import { ScreamingSnakeCase } from 'type-fest';
 import documents from '@/graphql';
+import { Query } from '@/types/graphql';
+import { GraphQLClient as _GraphQLClient, RequestDocument, Variables } from 'graphql-request';
+import * as Dom from 'graphql-request/src/types.dom';
+import snakeCase from 'lodash/snakeCase';
+import { ScreamingSnakeCase } from 'type-fest';
 
 type QueryResponse = Omit<Query, '__typename'>;
 export type QueryType = {
@@ -36,7 +36,7 @@ export class Graphql extends GraphQLClient {
     requestHeaders?: Dom.RequestInit['headers'],
   ): Promise<T> {
     const type = snakeCase(key).toUpperCase() as keyof typeof documents;
-    const _document = documents[type];
+    const _document = documents[type] as RequestDocument;
     return super.request(_document, variables, requestHeaders);
   }
 }
