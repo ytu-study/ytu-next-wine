@@ -44,11 +44,11 @@ function WineTaste(props: TasteProps) {
       {types.map((type, i) => {
         return (
           <Taste key={i}>
-            <span>{koTypes[type]}</span>
+            {/*<span>{koTypes[type]}</span>*/}
             <div>
-              {Array.from({ length: 5 }).map((a, i) => {
-                return <Circle key={i} className={props.info && props.info[type] >= i + 1 ? 'on' : ''} />;
-              })}
+              {/*{Array.from({ length: 5 }).map((a, i) => {*/}
+              {/*  return <Circle key={i} className={props.info && props.info[type] >= i + 1 ? 'on' : ''} />;*/}
+              {/*})}*/}
             </div>
           </Taste>
         );
