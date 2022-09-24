@@ -1,0 +1,88 @@
+query getVivinoWine($id: ObjectId!) {
+  getVivinoWine(id: $id) {
+    id
+    vintage {
+      id
+      year
+      statistics {
+        ratingsAverage
+        ratingsCount
+      }
+      image {
+        variations {
+          bottleSmall
+        }
+      }
+      wine {
+        id
+        name
+        typeId
+        isNatural
+        winery {
+          id
+          name
+        }
+        taste {
+          structure {
+            intensity
+            fizziness
+            acidity
+            sweetness
+            tannin
+            calculatedStructureCount
+            userStructureCount
+          }
+          flavor {
+            group
+            stats {
+              count
+              score
+            }
+            primaryKeywords {
+              id
+              name
+            }
+            secondaryKeywords {
+              id
+              name
+              count
+            }
+          }
+        }
+        style {
+          id
+          name
+          blurb
+          food {
+            id
+            name
+          }
+          grapes {
+            id
+            name
+          }
+        }
+        region {
+          id
+          name
+          country {
+            code
+            name
+            mostUsedGrapes {
+              id
+              name
+            }
+          }
+        }
+      }
+    }
+    price {
+      id
+      amount
+      url
+      currency {
+        prefix
+      }
+    }
+  }
+}
