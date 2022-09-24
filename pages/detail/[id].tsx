@@ -5,10 +5,10 @@ import { Dehydrate } from '@/modules/dehydrate';
 import { GetServerSidePropsContext } from 'next';
 import { useQuery } from 'react-query';
 import { Suspense } from 'react';
-//
+
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const wineId = context.query.id as string;
-  const dehydratedState = await Dehydrate.prefetchQuery(api.WINE, () => api.fetchWine({ id: wineId }).then(data => data.getWine));
+  const wineId = context.params?.id as string;
+  const dehydratedState = await Dehydrate.prefetchQuery(api.GET_VIVINO_WINE, () => api.fetchVivinoWine({ id: wineId }));
   return {
     props: { dehydratedState, wineId },
   };
@@ -37,14 +37,11 @@ export type DetailProps = {
 };
 
 function Detail(props: DetailProps) {
-  const { data } = useQuery(api.WINE, () => api.fetchWine({ id: props.wineId }), { suspense: true });
+  const { data } = useQuery(api.GET_VIVINO_WINE, () => api.fetchVivinoWine({ id: props.wineId }));
 
-  console.log('data', data);
   return (
     <div>
-      <Suspense fallback={<LoadingPage />}>
-        <WineInfo wineId={props.wineId} />
-      </Suspense>
+      <WineInfo wineId={props.wineId} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import api from '@/api';
 import WineTaste from '@/components/detail/WineTaste';
 import { DetailProps } from '@/pages/detail/[id]';
+import { VivinoWineEntity } from '@/types/graphql';
 import Image from 'next/image';
 import Skeleton from 'react-loading-skeleton';
 import { useQuery } from 'react-query';
@@ -43,43 +44,45 @@ const Detail = styled.div`
 `;
 
 function WineInfo(props: DetailProps) {
-  const { data: wine, isLoading } = useQuery(api.WINE, () => api.fetchWine({ id: props.wineId }).then(data => data.getWine));
+  const { data, isLoading } = useQuery(api.GET_VIVINO_WINE, () => api.fetchVivinoWine({ id: props.wineId }));
+  const wine = data?.getVivinoWine as VivinoWineEntity;
 
-  return (
-    <Info>
-      <WineImg>
-        <Image src={wine.image} width={320} height={430} />
-      </WineImg>
-      <div>
-        <div>
-          <Summary>
-            {isLoading ? <Skeleton width={196} height={18} containerClassName="skeleton" /> : <Category>{wine.category}</Category>}
-            <div>{wine.country}</div>
-            <div>|</div>
-            <div>{wine.winery}</div>
-          </Summary>
-          <div></div>
-        </div>
-        <div>
-          <h3>{wine.name}</h3>
-          <p>{wine.enName}</p>
-        </div>
-        <div>
-          <p>{wine.price}</p>
-        </div>
-        <Detail>
-          <div>
-            <WineTaste info={wine} />
-          </div>
-        </Detail>
-        <div>
-          <span>포도</span>
-          <span>{wine.grape}</span>
-        </div>
-        <div>{wine.foodMatching?.length > 0 ? <span>어울리는 음식</span> : null}</div>
-      </div>
-    </Info>
-  );
+  return null;
+  // return (
+  // <Info>
+  //   <WineImg>
+  //     <Image src={wine.image} width={320} height={430} />
+  //   </WineImg>
+  //   <div>
+  //     <div>
+  //       <Summary>
+  //         {isLoading ? <Skeleton width={196} height={18} containerClassName="skeleton" /> : <Category>{wine.category}</Category>}
+  //         <div>{wine.country}</div>
+  //         <div>|</div>
+  //         <div>{wine.winery}</div>
+  //       </Summary>
+  //       <div></div>
+  //     </div>
+  //     <div>
+  //       <h3>{wine.name}</h3>
+  //       <p>{wine.enName}</p>
+  //     </div>
+  //     <div>
+  //       <p>{wine.price}</p>
+  //     </div>
+  //     <Detail>
+  //       <div>
+  //         <WineTaste info={wine} />
+  //       </div>
+  //     </Detail>
+  //     <div>
+  //       <span>포도</span>
+  //       <span>{wine.grape}</span>
+  //     </div>
+  //     <div>{wine.foodMatching?.length > 0 ? <span>어울리는 음식</span> : null}</div>
+  //   </div>
+  // </Info>
+  // );
 }
 
 export default WineInfo;
