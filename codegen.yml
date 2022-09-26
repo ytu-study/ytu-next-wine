@@ -8,7 +8,12 @@ generates:
       - typescript-react-query
     config:
       fetcher:
-        endpoint: ${NEXT_PUBLIC_API_URL}
+        ../modules/graphqlQueryFetcher#graphqlQueryFetcher
+      exposeFetcher: true
+      exposeQueryKeys: true
+      scalars:
+        ObjectId: string
+      skipTypename: true
   generated/schema.graphql:
     plugins:
       - schema-ast
