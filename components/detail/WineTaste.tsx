@@ -35,8 +35,8 @@ type TasteProps = {
 };
 
 function WineTaste(props: TasteProps) {
-  const types = ['sweet', 'acidity', 'tanin', 'body'];
-  const koTypes = { sweet: '당도', acidity: '산미', tanin: '타닌', body: '바디' };
+  const types = ["sweet", "acidity", "tanin", "body"];
+  const koTypes = { sweet: "당도", acidity: "산미", tanin: "타닌", body: "바디" };
 
   return (
     <div>

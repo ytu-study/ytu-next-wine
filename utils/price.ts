@@ -1,4 +1,4 @@
-import { Maybe } from '@/generated/graphql';
+import { Maybe } from "@/generated/graphql";
 
 /**
  * @example
@@ -9,9 +9,9 @@ import { Maybe } from '@/generated/graphql';
 export const priceToString = (price: number | string, prefix?: Maybe<string>) => {
   const _price = (() => {
     const _price = (+price || 0).toFixed(0);
-    return _price.replace(_price.slice(-3), '000').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return _price.replace(_price.slice(-3), "000").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   })();
-  const _prefix = prefix?.concat(' ') ?? '';
+  const _prefix = prefix?.concat(" ") ?? "";
 
   return `${_prefix}${_price}`;
 };

@@ -1,7 +1,7 @@
-import { queryClient } from '@/components/provider/ReactQueryProvider';
-import { FetchQueryOptions, QueryFunction, QueryKey } from '@tanstack/query-core/src/types';
-import { dehydrate, DehydratedState } from '@tanstack/react-query';
-import { isFunction } from 'lodash';
+import { queryClient } from "@/components/provider/ReactQueryProvider";
+import { FetchQueryOptions, QueryFunction, QueryKey } from "@tanstack/query-core/src/types";
+import { dehydrate, DehydratedState } from "@tanstack/react-query";
+import { isFunction } from "lodash";
 
 const isQueryKey = <TQueryFnData = unknown, TError = unknown, TData = TQueryFnData, TQueryKey extends QueryKey = QueryKey>(
   arg1: TQueryKey | FetchQueryOptions<TQueryFnData, TError, TData, TQueryKey>,
@@ -49,10 +49,10 @@ type GraphqlQuery<T extends Functions, TVariables> = T & {
   fetcher<V extends TVariables>(variables?: V, options?: HeadersInit): () => Promise<ReturnType<T>>;
 };
 
-export const prefetch = async <T extends Functions, V extends Parameters<T>[0], Q extends Pick<GraphqlQuery<T, V>, 'getKey' | 'fetcher'>>(
+export const prefetch = async <T extends Functions, V extends Parameters<T>[0], Q extends Pick<GraphqlQuery<T, V>, "getKey" | "fetcher">>(
   graphqlQuery: T,
   variables?: V,
-  options?: FetchQueryOptions<Q, unknown, ReturnType<Q['fetcher']>>,
+  options?: FetchQueryOptions<Q, unknown, ReturnType<Q["fetcher"]>>,
 ) => {
   const { getKey, fetcher } = graphqlQuery as Q;
   await queryClient.prefetchQuery(getKey(variables), fetcher(variables), options);

@@ -76,7 +76,7 @@ const WineImage = styled.img`
   transition: all 0.25s ease-in-out;
   margin-top: -56px;
   height: 300px;
-  content: url(${p => p.src ?? '/img/empty.png'});
+  content: url(${p => p.src ?? "/img/empty.png"});
 `;
 
 type CardProps = {
@@ -93,7 +93,7 @@ export default function WineCard({ data }: PropsWithChildren<CardProps>) {
         <Link href={`/detail/${id}`}>
           <WineCardSection>
             <WineBottle>
-              <WineImage src={image.variations.bottleSmall ?? ''} />
+              <WineImage src={image.variations.bottleSmall ?? ""} />
             </WineBottle>
             <WineInfo>
               <WineVintage>

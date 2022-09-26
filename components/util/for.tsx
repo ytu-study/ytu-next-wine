@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
 type EachObject = { readonly [P: string]: unknown };
 type EachArray = readonly unknown[];

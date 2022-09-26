@@ -1,4 +1,4 @@
-import isObject from 'lodash/isObject';
+import isObject from "lodash/isObject";
 
 export const isNotEmpty = <T>(item?: T): boolean => {
   if (!item) return false;
