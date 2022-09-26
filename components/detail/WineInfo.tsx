@@ -1,10 +1,10 @@
 import api from '@/api';
 import WineTaste from '@/components/detail/WineTaste';
 import { DetailProps } from '@/pages/detail/[id]';
-import { VivinoWineEntity } from '@/types/graphql';
+import { useGetVivinoWineQuery, VivinoWineEntity } from '@/generated/graphql';
 import Image from 'next/image';
 import Skeleton from 'react-loading-skeleton';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import styled from 'styled-components';
 
 const Info = styled.div`
@@ -44,7 +44,7 @@ const Detail = styled.div`
 `;
 
 function WineInfo(props: DetailProps) {
-  const { data, isLoading } = useQuery(api.GET_VIVINO_WINE, () => api.fetchVivinoWine({ id: props.wineId }));
+  const { data, isLoading } = useGetVivinoWineQuery({ id: props.wineId });
   const wine = data?.getVivinoWine as VivinoWineEntity;
 
   return null;

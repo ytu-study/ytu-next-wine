@@ -1,10 +1,9 @@
-import api from '@/api';
+import { useGetWinesQuery } from '@/generated/graphql';
 import { NextPage } from 'next';
 import React from 'react';
-import { useQuery } from 'react-query';
 
 const QueryPage: NextPage = () => {
-  const { data, isLoading } = useQuery(api.GET_WINES, () => api.fetchWines());
+  const { data, isLoading } = useGetWinesQuery();
   if (isLoading) return <div>Loading...</div>;
 
   return (

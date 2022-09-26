@@ -1,4 +1,4 @@
-import { Wine } from '@/types/graphql';
+import { Wine } from '@/generated/graphql';
 import styled from 'styled-components';
 
 const Taste = styled.div`

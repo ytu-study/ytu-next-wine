@@ -1,5 +1,5 @@
 import documents from '@/graphql';
-import { Query } from '@/types/graphql';
+import { Query } from '@/generated/graphql';
 import { GraphQLClient as _GraphQLClient, RequestDocument, Variables } from 'graphql-request';
 import * as Dom from 'graphql-request/src/types.dom';
 import snakeCase from 'lodash/snakeCase';

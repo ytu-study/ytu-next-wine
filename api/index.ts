@@ -1,5 +1,5 @@
 import { Graphql } from '@/modules/graphql';
-import { QueryGetVivinoWineArgs, QueryGetVivinoWinesArgs, QueryGetWineArgs, QueryGetWinesArgs } from '@/types/graphql';
+import { QueryGetVivinoWineArgs, QueryGetVivinoWinesArgs, QueryGetWineArgs, QueryGetWinesArgs } from '@/generated/graphql';
 
 export class Api extends Graphql {
   /** @deprecated fetchVivinoWine으로  대체 */
