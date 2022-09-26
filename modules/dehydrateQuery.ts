@@ -43,4 +43,21 @@ class DehydrateQuery {
   }
 }
 
+type Functions = (...args: any[]) => any;
+type GraphqlQuery<T extends Functions, TVariables> = T & {
+  getKey<V extends TVariables>(variables?: V): QueryKey;
+  fetcher<V extends TVariables>(variables?: V, options?: HeadersInit): () => Promise<ReturnType<T>>;
+};
+
+export const prefetch = async <T extends Functions, V extends Parameters<T>[0], Q extends Pick<GraphqlQuery<T, V>, 'getKey' | 'fetcher'>>(
+  graphqlQuery: T,
+  variables?: V,
+  options?: FetchQueryOptions<Q, unknown, ReturnType<Q['fetcher']>>,
+) => {
+  const { getKey, fetcher } = graphqlQuery as Q;
+  await queryClient.prefetchQuery(getKey(variables), fetcher(variables), options);
+
+  return dehydrate(queryClient);
+};
+
 export const dehydrateQuery = new DehydrateQuery();
