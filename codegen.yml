@@ -1,19 +1,54 @@
 schema: ${NEXT_PUBLIC_API_URL}
 documents: graphql/**/*.{gql,graphql}
 generates:
-  generated/graphql.ts:
+  generated/types/schema.d.ts:
+    # schema에 대한 타입 제너레이트
     plugins:
       - typescript
-      - typescript-operations
-      - typescript-react-query
     config:
-      fetcher:
-        ../modules/graphqlQueryFetcher#graphqlQueryFetcher
-      exposeFetcher: true
-      exposeQueryKeys: true
+      # cont Enum 사용 여부(default: false)
+      constEnums: true
+      # export 사용안함 여부(default: false)
+      noExport: true
+      # 타입정의 종류(default: type)
+      declarationKind: interface
+      # scalars 타입 정의 여부(default: any)
       scalars:
         ObjectId: string
+      # __typename 사용안함 여부(default: false)
       skipTypename: true
+  generated/types/graphql.d.ts:
+    # documents에 대한 타입 제너레이트
+    plugins:
+      - typescript-operations
+    config:
+      # cont Enum 사용 여부(default: false)
+      constEnums: true
+      # export 사용안함 여부(default: false)
+      noExport: true
+      # __typename 사용안함 여부(default: false)
+      skipTypename: true
+  generated/reactQuery.ts:
+    # react-query 타입 제너레이트
+    plugins:
+      - typescript-react-query
+    config:
+      # react-query fetcher 지정(default: fetch)
+      # 1. fetcher: { endpoint: string, fetchParams: RequestInit } // fetch 기본 값 설정
+      # 2. fetcher: file#identifier // custom fetcher 사용
+      # 3. fetcher: graphql-request // graphql-request 사용
+      fetcher:
+        ../modules/graphqlQueryFetcher#graphqlQueryFetcher
+      # 사용된 fetcher를 가져오기 위해 제공되는 fetcher 필드 추가 여부(default: false)
+      # userQuery.fetcher() // queryClient.prefetchQuery에 사용하기 위함
+      exposeFetcher: true
+      # 사용된 queryKey를 가져오기 위해 제공되는 geyKey 필드 추가 여부(default: false)
+      # userQuery.getKey() // queryClient.prefetchQuery에 사용하기 위함
+      exposeQueryKeys: true
+      # 사용된 mutationKey를 가져오기 위해 제공되는 geyKey 필드 추가 여부(default: false)
+      # userMutation.getKey()
+      exposeMutationKeys: true
   generated/schema.graphql:
+    # 해당 schema url에 대한 스키마파일 가져오기 위해 사용
     plugins:
       - schema-ast
