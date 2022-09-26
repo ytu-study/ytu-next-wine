@@ -1,19 +1,24 @@
 import api from '@/api';
 import WineCard from '@/components/list/wineCard';
 import For from '@/components/util/for';
-import { Dehydrate } from '@/modules/dehydrate';
-import { PaginatedVivinoWine } from '@/types/graphql';
-import { useQuery } from 'react-query';
+import { dehydrateQuery } from '@/modules/dehydrateQuery';
+import { PaginatedVivinoWine, useGetVivinoWinesQuery } from '@/generated/graphql';
+
+type ListProps = {
+  page: number;
+  display: number;
+};
 
 export async function getServerSideProps() {
-  const dehydratedState = await Dehydrate.prefetchQuery(api.GET_VIVINO_WINES, () => api.fetchVivinoWines({ page: 1, display: 10 }));
+  const variables = { page: 1, display: 10 };
+  const dehydratedState = await dehydrateQuery.prefetch(['getVivinoWines', variables], () => api.fetchVivinoWines(variables));
   return {
-    props: { dehydratedState },
+    props: { dehydratedState, ...variables },
   };
 }
 
-export default function List() {
-  const { data } = useQuery(api.GET_VIVINO_WINES, () => api.fetchVivinoWines(), { suspense: true });
+export default function List({ page, display }: ListProps) {
+  const { data } = useGetVivinoWinesQuery({ page, display }, { suspense: true });
   const wines = data?.getVivinoWines as PaginatedVivinoWine;
 
   return (
