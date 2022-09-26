@@ -1,4 +1,4 @@
-import { Maybe } from '@/types/graphql';
+import { Maybe } from '@/generated/graphql';
 
 /**
  * @example
