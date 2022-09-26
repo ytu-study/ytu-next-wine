@@ -1,5 +1,5 @@
-query ($id: String!) {
-  getWine(id: $id) {
+query getWines($display: Int) {
+  getWines(display: $display) {
     _id
     name
     enName

@@ -7,4 +7,4 @@ import GET_VIVINO_WINES from "./query/getVivinoWines.gql";
 import { RequestDocument } from "graphql-request";
 
 type Documents = { [P in keyof QueryType]: RequestDocument };
-export default {} as Documents;
+export default { GET_WINE, GET_WINES, GET_WINE_IDS, GET_VIVINO_WINE, GET_VIVINO_WINES } as Documents;
