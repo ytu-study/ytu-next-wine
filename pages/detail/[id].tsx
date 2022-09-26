@@ -1,14 +1,13 @@
-import api from '@/api';
 import WineInfo from '@/components/detail/WineInfo';
 import { dehydrateQuery } from '@/modules/dehydrateQuery';
 import { useGetVivinoWineQuery } from '@/generated/graphql';
 import { GetServerSidePropsContext } from 'next';
 
 export async function getServerSideProps(context: GetServerSidePropsContext<{ id: string }>) {
-  const variables = { id: context.params?.id };
-  const dehydratedState = await dehydrateQuery.prefetch(['getVivinoWine', variables], () => api.fetchVivinoWine(variables));
+  const variables = { id: context.params?.id as string };
+  const dehydratedState = await dehydrateQuery.prefetch(useGetVivinoWineQuery.getKey(variables), () => useGetVivinoWineQuery.fetcher(variables));
   return {
-    props: { dehydratedState, ...variables },
+    props: { dehydratedState, variables },
   };
 }
 
@@ -31,15 +30,17 @@ export async function getServerSideProps(context: GetServerSidePropsContext<{ id
 //   };
 // }
 export type DetailProps = {
-  wineId: string;
+  variables: {
+    id: string;
+  };
 };
 
-function Detail(props: DetailProps) {
-  const { data } = useGetVivinoWineQuery({ id: props.wineId });
+function Detail({ variables }: DetailProps) {
+  const { data } = useGetVivinoWineQuery(variables);
 
   return (
     <div>
-      <WineInfo wineId={props.wineId} />
+      <WineInfo variables={variables} />
     </div>
   );
 }
