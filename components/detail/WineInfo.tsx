@@ -1,4 +1,3 @@
-import api from '@/api';
 import WineTaste from '@/components/detail/WineTaste';
 import { DetailProps } from '@/pages/detail/[id]';
 import { useGetVivinoWineQuery, VivinoWineEntity } from '@/generated/graphql';
@@ -43,8 +42,8 @@ const Detail = styled.div`
   }
 `;
 
-function WineInfo(props: DetailProps) {
-  const { data, isLoading } = useGetVivinoWineQuery({ id: props.wineId });
+function WineInfo({ variables }: DetailProps) {
+  const { data, isLoading } = useGetVivinoWineQuery(variables);
   const wine = data?.getVivinoWine as VivinoWineEntity;
 
   return null;
