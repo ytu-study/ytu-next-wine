@@ -1,6 +1,6 @@
-import { useGetWinesQuery } from "@/generated/graphql";
-import { NextPage } from "next";
-import React from "react";
+import { useGetWinesQuery } from '@/generated/reactQuery';
+import { NextPage } from 'next';
+import React from 'react';
 
 const QueryPage: NextPage = () => {
   const { data, isLoading } = useGetWinesQuery();

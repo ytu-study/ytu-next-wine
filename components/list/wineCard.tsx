@@ -1,8 +1,7 @@
-import { VivinoWineEntity } from "@/generated/graphql";
-import { priceToString } from "@/utils/price";
-import Link from "next/link";
-import { PropsWithChildren } from "react";
-import styled from "styled-components";
+import { priceToString } from '@/utils/price';
+import Link from 'next/link';
+import { PropsWithChildren } from 'react';
+import styled from 'styled-components';
 
 const WineCardContainer = styled.article`
   cursor: pointer;

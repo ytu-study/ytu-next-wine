@@ -15,7 +15,8 @@
     "typeRoots": [
       /* 타입정의를 포함할 폴더목록, '/node_modules/@types/' 는 기본 포함됨 */
       "node_modules/@types",
-      "types"
+      "types",
+      "generated/types"
     ],
     "allowJs": true /* Javascript 파일 컴파일 허용 */,
     "allowSyntheticDefaultImports": true /* default export가 없는 모듈에서 기본호출 허용 */,
