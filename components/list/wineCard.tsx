@@ -1,4 +1,3 @@
-import { VivinoWineEntity } from '@/generated/graphql';
 import { priceToString } from '@/utils/price';
 import Link from 'next/link';
 import { PropsWithChildren } from 'react';

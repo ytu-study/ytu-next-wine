@@ -1,7 +1,7 @@
 import WineCard from '@/components/list/wineCard';
 import For from '@/components/util/for';
+import { useGetVivinoWinesQuery } from '@/generated/reactQuery';
 import { prefetch } from '@/modules/dehydrateQuery';
-import { PaginatedVivinoWine, useGetVivinoWinesQuery } from '@/generated/graphql';
 
 type ListProps = {
   variables: {

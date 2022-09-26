@@ -1,6 +1,6 @@
 import WineInfo from '@/components/detail/WineInfo';
+import { useGetVivinoWineQuery } from '@/generated/reactQuery';
 import { prefetch } from '@/modules/dehydrateQuery';
-import { useGetVivinoWineQuery } from '@/generated/graphql';
 import { GetServerSidePropsContext } from 'next';
 
 export async function getServerSideProps(context: GetServerSidePropsContext<{ id: string }>) {

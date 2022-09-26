@@ -1,6 +1,6 @@
 import WineTaste from '@/components/detail/WineTaste';
+import { useGetVivinoWineQuery } from '@/generated/reactQuery';
 import { DetailProps } from '@/pages/detail/[id]';
-import { useGetVivinoWineQuery, VivinoWineEntity } from '@/generated/graphql';
 import Image from 'next/image';
 import Skeleton from 'react-loading-skeleton';
 import { useQuery } from '@tanstack/react-query';

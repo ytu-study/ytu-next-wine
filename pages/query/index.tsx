@@ -1,4 +1,4 @@
-import { useGetWinesQuery } from '@/generated/graphql';
+import { useGetWinesQuery } from '@/generated/reactQuery';
 import { NextPage } from 'next';
 import React from 'react';
 
