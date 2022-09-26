@@ -725,6 +725,21 @@ export type WineryBackgroundImage = {
   variations: TentacledVariations;
 };
 
+export type GetVivinoWineQueryVariables = Exact<{
+  id: Scalars['ObjectId'];
+}>;
+
+
+export type GetVivinoWineQuery = { __typename?: 'Query', getVivinoWine: { __typename?: 'VivinoWineEntity', id: string, vintage: { __typename?: 'Vintage', id: number, year: string, statistics: { __typename?: 'VintageStatistics', ratingsAverage: number, ratingsCount: number }, image: { __typename?: 'VintageImage', variations: { __typename?: 'ImageVariations', bottleSmall?: string | null } }, wine: { __typename?: 'VintageWine', id: number, name: string, typeId: number, isNatural: boolean, winery: { __typename?: 'Winery', id: number, name: string }, taste: { __typename?: 'Taste', structure?: { __typename?: 'TasteStructure', intensity: number, fizziness?: number | null, acidity: number, sweetness?: number | null, tannin?: number | null, calculatedStructureCount: number, userStructureCount: number } | null, flavor: Array<{ __typename?: 'Flavor', group: Group, stats: { __typename?: 'FlavorStats', count: number, score: number }, primaryKeywords?: Array<{ __typename?: 'Keyword', id: number, name: string }> | null, secondaryKeywords?: Array<{ __typename?: 'Keyword', id: number, name: string, count: number }> | null }> }, style?: { __typename?: 'WineStyle', id: number, name: string, blurb?: string | null, food?: Array<{ __typename?: 'WineFood', id: number, name: string }> | null, grapes: Array<{ __typename?: 'WineGrape', id: number, name: string }> } | null, region: { __typename?: 'Region', id: number, name: string, country: { __typename?: 'WineCountry', code: string, name: string, mostUsedGrapes: Array<{ __typename?: 'WineGrape', id: number, name: string }> } } } }, price: { __typename?: 'Price', id: number, amount: number, url: string, currency: { __typename?: 'Currency', prefix?: string | null } } } };
+
+export type GetVivinoWinesQueryVariables = Exact<{
+  page?: InputMaybe<Scalars['Int']>;
+  display?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type GetVivinoWinesQuery = { __typename?: 'Query', getVivinoWines: { __typename?: 'PaginatedVivinoWine', display: number, page: number, items: Array<{ __typename?: 'VivinoWineEntity', id: string, vintage: { __typename?: 'Vintage', id: number, year: string, statistics: { __typename?: 'VintageStatistics', ratingsAverage: number, ratingsCount: number }, image: { __typename?: 'VintageImage', variations: { __typename?: 'ImageVariations', bottleSmall?: string | null } }, wine: { __typename?: 'VintageWine', id: number, name: string, typeId: number, isNatural: boolean, winery: { __typename?: 'Winery', id: number, name: string }, taste: { __typename?: 'Taste', structure?: { __typename?: 'TasteStructure', intensity: number, fizziness?: number | null, acidity: number, sweetness?: number | null, tannin?: number | null, calculatedStructureCount: number, userStructureCount: number } | null, flavor: Array<{ __typename?: 'Flavor', group: Group, stats: { __typename?: 'FlavorStats', count: number, score: number }, primaryKeywords?: Array<{ __typename?: 'Keyword', id: number, name: string, count: number }> | null, secondaryKeywords?: Array<{ __typename?: 'Keyword', id: number, name: string, count: number }> | null }> }, style?: { __typename?: 'WineStyle', id: number, name: string, blurb?: string | null, food?: Array<{ __typename?: 'WineFood', id: number, name: string }> | null, grapes: Array<{ __typename?: 'WineGrape', id: number, name: string }> } | null, region: { __typename?: 'Region', id: number, name: string, country: { __typename?: 'WineCountry', code: string, name: string, mostUsedGrapes: Array<{ __typename?: 'WineGrape', id: number, name: string }> } } } }, price: { __typename?: 'Price', id: number, amount: number, url: string, currency: { __typename?: 'Currency', prefix?: string | null } } }> } };
+
 export type Unnamed_1_QueryVariables = Exact<{
   id: Scalars['String'];
 }>;
@@ -732,9 +747,14 @@ export type Unnamed_1_QueryVariables = Exact<{
 
 export type Unnamed_1_Query = { __typename?: 'Query', getWine: { __typename?: 'Wine', _id: string, name: string, enName: string, image: string, category: string, country: string, grape: string, price?: number | null, sweet: number, body: number, acidity: number, tanin: number, winery: string, foodMatching?: Array<string> | null } };
 
-export type Unnamed_2_QueryVariables = Exact<{
+export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_2_Query = { __typename?: 'Query', getWineIds: Array<string> };
+
+export type Unnamed_3_QueryVariables = Exact<{
   display?: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type Unnamed_2_Query = { __typename?: 'Query', getWines: Array<{ __typename?: 'Wine', _id: string, name: string, enName: string, image: string, category: string, country: string, grape: string, price?: number | null, sweet: number, body: number, acidity: number, tanin: number, winery: string, foodMatching?: Array<string> | null }> };
+export type Unnamed_3_Query = { __typename?: 'Query', getWines: Array<{ __typename?: 'Wine', _id: string, name: string, enName: string, image: string, category: string, country: string, grape: string, price?: number | null, sweet: number, body: number, acidity: number, tanin: number, winery: string, foodMatching?: Array<string> | null }> };

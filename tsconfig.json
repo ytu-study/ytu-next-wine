@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5" /* 컴파일할 ECMAScript 버전: 'ES3'(기본), 'ES2015', 'ES2016'... */,
+    "target": "ESNext" /* 컴파일할 ECMAScript 버전: 'ES3'(기본), 'ES2015', 'ES2016'... */,
     "lib": [
       /* 컴파일 과정에서 사용될 라이브러리 파일 */
       "dom",

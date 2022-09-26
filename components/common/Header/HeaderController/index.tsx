@@ -1,6 +1,6 @@
 import MainLogo from "@/components/svg/MainLogo";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import HeaderSearchInput from "./ControllerSearchInput";
 

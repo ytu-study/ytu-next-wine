@@ -7,7 +7,7 @@ interface PropsType {
   placeholder?: string;
 }
 
-const BaseRefInput = ({ children, onSubmit, ...props }: PropsWithChildren<PropsType>) => {
+export default function BaseRefInput({ children, onSubmit, ...props }: PropsWithChildren<PropsType>) {
   const ref = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,12 +21,10 @@ const BaseRefInput = ({ children, onSubmit, ...props }: PropsWithChildren<PropsT
       <input {...props} ref={ref} />
     </ScBaseRefInput>
   );
-};
+}
 
 export const ScBaseRefInput = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-
-export default BaseRefInput;

@@ -1,20 +1,28 @@
-import GET_WINE from '@/graphql/query/getWine.gql';
-import GET_WINES from '@/graphql/query/getWines.gql';
-import { Graphql } from '@/modules/graphql';
-import { QueryGetWineArgs, QueryGetWinesArgs } from '@/types/graphql';
+import { Graphql } from "@/modules/graphql";
+import { QueryGetVivinoWineArgs, QueryGetVivinoWinesArgs, QueryGetWineArgs, QueryGetWinesArgs } from "@/types/graphql";
 
-class Key {
-  readonly WINE = 'wine';
-  readonly WINES = 'wines';
-}
-
-export class Api extends Key {
+export class Api extends Graphql {
+  /** @deprecated fetchVivinoWine으로  대체 */
   fetchWine(wineArgs: QueryGetWineArgs) {
-    return Graphql.get(GET_WINE, wineArgs);
+    return this.get(this.GET_WINE, wineArgs);
   }
 
+  /** @deprecated fetchVivinoWines로  대체 */
   fetchWines(winesArgs?: QueryGetWinesArgs) {
-    return Graphql.get(GET_WINES, winesArgs);
+    return this.get(this.GET_WINES, winesArgs);
+  }
+
+  /** @deprecated */
+  fetchWineIds() {
+    return this.get(this.GET_WINE_IDS);
+  }
+
+  fetchVivinoWine(args?: QueryGetVivinoWineArgs) {
+    return this.get(this.GET_VIVINO_WINE, args);
+  }
+
+  fetchVivinoWines(args?: QueryGetVivinoWinesArgs) {
+    return this.get(this.GET_VIVINO_WINES, args);
   }
 }
 

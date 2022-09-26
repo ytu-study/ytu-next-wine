@@ -1,5 +1,5 @@
-import { Wine } from '@/types/graphql';
-import styled from 'styled-components';
+import { Wine } from "@/types/graphql";
+import styled from "styled-components";
 
 const Taste = styled.div`
   display: inline-block;
@@ -36,19 +36,19 @@ type TasteProps = {
 };
 
 function WineTaste(props: TasteProps) {
-  const types = ['sweet', 'acidity', 'tanin', 'body'];
-  const koTypes = { sweet: '당도', acidity: '산미', tanin: '타닌', body: '바디' };
+  const types = ["sweet", "acidity", "tanin", "body"];
+  const koTypes = { sweet: "당도", acidity: "산미", tanin: "타닌", body: "바디" };
 
   return (
     <div>
       {types.map((type, i) => {
         return (
           <Taste key={i}>
-            <span>{koTypes[type]}</span>
+            {/*<span>{koTypes[type]}</span>*/}
             <div>
-              {Array.from({ length: 5 }).map((a, i) => {
-                return <Circle key={i} className={props.info && props.info[type] >= i + 1 ? 'on' : ''} />;
-              })}
+              {/*{Array.from({ length: 5 }).map((a, i) => {*/}
+              {/*  return <Circle key={i} className={props.info && props.info[type] >= i + 1 ? 'on' : ''} />;*/}
+              {/*})}*/}
             </div>
           </Taste>
         );
