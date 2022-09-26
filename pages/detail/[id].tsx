@@ -1,11 +1,11 @@
 import WineInfo from '@/components/detail/WineInfo';
-import { dehydrateQuery } from '@/modules/dehydrateQuery';
+import { prefetch } from '@/modules/dehydrateQuery';
 import { useGetVivinoWineQuery } from '@/generated/graphql';
 import { GetServerSidePropsContext } from 'next';
 
 export async function getServerSideProps(context: GetServerSidePropsContext<{ id: string }>) {
   const variables = { id: context.params?.id as string };
-  const dehydratedState = await dehydrateQuery.prefetch(useGetVivinoWineQuery.getKey(variables), () => useGetVivinoWineQuery.fetcher(variables));
+  const dehydratedState = await prefetch(useGetVivinoWineQuery, variables);
   return {
     props: { dehydratedState, variables },
   };

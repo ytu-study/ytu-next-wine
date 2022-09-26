@@ -1,6 +1,6 @@
 import WineCard from '@/components/list/wineCard';
 import For from '@/components/util/for';
-import { dehydrateQuery } from '@/modules/dehydrateQuery';
+import { prefetch } from '@/modules/dehydrateQuery';
 import { PaginatedVivinoWine, useGetVivinoWinesQuery } from '@/generated/graphql';
 
 type ListProps = {
@@ -12,9 +12,9 @@ type ListProps = {
 
 export async function getServerSideProps() {
   const variables = { page: 1, display: 10 };
-  const dehydratedState = await dehydrateQuery.prefetch(useGetVivinoWinesQuery.getKey(variables), useGetVivinoWinesQuery.fetcher(variables));
+  const dehydratedState = await prefetch(useGetVivinoWinesQuery, variables);
   return {
-    props: { dehydratedState, ...variables },
+    props: { dehydratedState, variables },
   };
 }
 
