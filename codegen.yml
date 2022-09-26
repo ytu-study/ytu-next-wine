@@ -1,10 +1,14 @@
 schema: ${NEXT_PUBLIC_API_URL}
 documents: graphql/**/*.{gql,graphql}
 generates:
-  ./types/graphql.d.ts:
+  generated/graphql.ts:
     plugins:
       - typescript
       - typescript-operations
-  schema.graphql:
+      - typescript-react-query
+    config:
+      fetcher:
+        endpoint: ${NEXT_PUBLIC_API_URL}
+  generated/schema.graphql:
     plugins:
       - schema-ast
