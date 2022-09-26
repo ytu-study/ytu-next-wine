@@ -1,4 +1,4 @@
-query ($display: Int) {
+query getWines($display: Int) {
   getWines(display: $display) {
     _id
     name

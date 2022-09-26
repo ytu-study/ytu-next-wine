@@ -1,4 +1,4 @@
-query ($id: String!) {
+query getWine($id: String!) {
   getWine(id: $id) {
     _id
     name
